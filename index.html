@@ -1,0 +1,490 @@
+<html>
+<head>
+  <title>Abel John Jacob — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root
+    {
+      --bg:#0b1020;          
+      --panel:#121a2f;       
+      --soft:#1a2340;        
+      --text:#e6ecff;        
+      --muted:#aab6da;       
+      --brand:#6aa3ff;       
+      --brand-2:#8ef;        
+      --ok:#6ee7b7;
+      --warn:#fbbf24;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body
+    {
+      margin:0;
+      height:100%;
+      scroll-behavior:smooth;
+      background:radial-gradient(1200px 700px at 10% -10%, #243056 0%, transparent 60%),radial-gradient(900px 600px at 100% 10%, #1b2450 0%, transparent 55%), var(--bg);
+    }
+
+    body
+    {
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);line-height:1.6
+    }
+
+    a
+    {
+      color:var(--brand);
+      text-decoration:none
+    }
+
+    a:hover
+    {
+      text-decoration:underline
+    }
+
+    .container
+    {
+      max-width:1100px;
+      margin:0 auto;
+      padding:28px
+    }
+
+    header.site
+    {
+      position:sticky;
+      top:0;z-index:20;
+      background:linear-gradient(180deg, rgba(11,16,32,.85), rgba(11,16,32,.55));
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(138,162,255,.12)
+    
+    }
+    .nav
+    {
+      display:flex;
+      align-items:center;
+      gap:18px;
+      justify-content:space-between
+    
+    }
+
+    .brand
+    {
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .brand .avatar 
+    {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .brand .avatar img 
+    {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; 
+      background: white; 
+      display: block;
+    }
+
+    .brand h1
+    {
+      font-size:18px;
+      margin:0
+    }
+
+    .brand small
+    {
+      display:block;
+      color:var(--muted);
+      font-weight:500;
+      margin-top:-2px
+    }
+
+    .nav a.btn
+    {
+      padding:10px 14px;
+      border:1px solid rgba(138,162,255,.25);
+      border-radius:12px;
+      background:rgba(26,35,64,.6)
+    }
+
+    .hero
+    {
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:28px;
+      margin-top:24px
+    
+    }
+
+    .card
+    {
+      background:linear-gradient(180deg, var(--panel), var(--soft));
+      border:1px solid rgba(138,162,255,.15);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow)
+    
+    }
+
+    .card.pad
+    {
+      padding:28px
+    }
+
+    .hero .title
+    {
+      font-size:40px;
+      line-height:1.15;
+      margin:0 0 10px;
+      font-weight:800
+    }
+
+    .hero p
+    {
+      color:var(--muted);margin:0 0 16px
+    }
+
+    .chipgroup
+    {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px
+    }
+
+    .chip
+    {
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(106,163,255,.12);
+      border:1px solid rgba(106,163,255,.25);
+      color:#dbe7ff;
+      font-weight:600
+    }
+
+    .cta
+    {
+      margin-top:18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap
+    }
+
+    .btn
+    {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid rgba(138,162,255,.25);
+      background:linear-gradient(180deg, rgba(26,35,64,.7), rgba(26,35,64,.4));
+      color:var(--text);
+      font-weight:700
+    }
+
+    .btn.primary
+    {
+      background:linear-gradient(180deg, #23407a, #1f3a6f);
+      border-color:rgba(106,163,255,.6)
+    }
+
+    .grid
+    {
+      display:grid;
+      gap:22px
+    }
+
+    .grid.cols-3
+    {
+      grid-template-columns:repeat(3,1fr)
+    }
+
+    .grid.cols-2
+    {
+      grid-template-columns:repeat(2,1fr)
+    }
+    
+    .section
+    {
+      margin-top:36px
+    }
+
+    .section h2
+    {
+      margin:0 0 12px;
+      font-size:22px;
+      letter-spacing:.3px
+    }
+
+    .timeline
+    {
+      display:grid;
+      gap:14px
+    }
+
+    .timeline .item
+    {
+      padding:16px;
+      border-radius:14px;
+      background:rgba(26,35,64,.5);
+      border:1px solid rgba(138,162,255,.15)
+    }
+
+    .item .row
+    {
+      display:flex;
+      justify-content:space-between;
+      gap:14px
+    }
+
+    .muted
+    {
+      color:var(--muted)
+    }
+
+    .projects .card .thumb
+    {
+      height:160px;
+      border-radius:14px;
+      background:linear-gradient(135deg, #2a3a70, #18224b);
+      border:1px dashed rgba(255,255,255,.2);
+      display:grid;place-items:center;
+      font-weight:700
+    }
+
+    .stack
+    {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;margin-top:8px
+    }
+
+    .stack span
+    {
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12)
+    }
+    
+    .langbars
+    {
+      display:grid;
+      gap:12px
+    }
+
+    .bar
+    {
+      height:10px;
+      border-radius:999px;
+      background:#11182f;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12)
+    }
+
+    .bar > i
+    {
+      display:block;
+      height:100%;
+      background:linear-gradient(90deg, var(--ok), var(--brand));
+    }
+
+    footer
+    {
+      margin:40px 0 20px;
+      color:var(--muted);
+      text-align:center
+    }
+
+    .tags
+    {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px
+    }
+
+    @media (max-width: 920px)
+    {
+      .hero{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width: 640px)
+    {
+      .grid.cols-2, .grid.cols-3{grid-template-columns:1fr}
+      .hero .title{font-size:32px}
+    }
+
+    @media print
+    {
+      header.site, .cta{display:none}
+      body{background:#fff;color:#111}
+      .card{box-shadow:none;border:1px solid #ddd;background:#fff}
+      a{color:#000}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site">
+    <div class="container nav">
+      <div class="brand">
+        <div class="avatar">
+          <img src="My_Pic.jpg" alt="Abel John Jacob" />
+        </div>
+
+        <div>
+          <h1>Abel John Jacob</h1>
+          <small>MCA Student · Saintgits College of Engineering, Kottayam</small>
+        </div>
+      </div>
+      <nav class="links">
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#education">Education</a>
+        <a class="btn" href="#contact">Contact</a>
+        <a class="btn primary" href="CV.pdf" download>Download CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card pad">
+        <h2 class="title">Learning-Building-Growing in Tech</h2><br>
+        <p style="text-align:justify">
+          Myself Abel John Jacob , a BCA graduate currently doing MCA having a strong foundation in Web Development.
+          Passionate about solving real-world problems through technology, I am continuously expanding my skills in areas like web development and emerging technologies. 
+          I thrive in collaborative environments and am eager to contribute to innovative projects while learning from experienced professionals.
+        </p>
+        <div class="cta">
+          <a class="btn">abeljr279@gmail.com</a>
+          <a class="btn" href="https://github.com/abeljohnjacob" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/abel-john-27ab15322/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <aside class="card pad">
+        <div class="section" id="skills">
+          <h2>Skills</h2>
+          <div class="grid cols-2">
+            <div>
+              <strong>Front-End Development</strong>
+              <div class="stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>Angular</span>
+              </div>
+            </div>
+            <div>
+              <strong>Cybersecurity Tools</strong>
+              <div class="stack">
+                <span>Nmap</span><span>Wireshark</span>
+              </div>
+            </div>
+            <div>
+              <strong>Version Control</strong>
+              <div class="stack"><span>Git</span></div>
+            </div>
+            <div>
+              <strong>Soft Skills</strong>
+              <div class="stack"><span>Communication</span><span>Teamwork</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h2>Languages</h2>
+          <div class="langbars">
+            <div><strong>English</strong><div class="bar" aria-label="English level"><i style="width:88%"></i></div><small class="muted">Advanced</small></div>
+            <div><strong>Hindi</strong><div class="bar" aria-label="Hindi level"><i style="width:75%"></i></div><small class="muted">Proficient</small></div>
+            <div><strong>Malayalam</strong><div class="bar" aria-label="Malayalam level"><i style="width:100%"></i></div><small class="muted">Native</small></div>
+            <div><strong>Tamil</strong><div class="bar" aria-label="Tamil level"><i style="width:60%"></i></div><small class="muted">Intermediate</small></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+      <div class="grid cols-2 projects">
+        
+        <article class="card pad">
+          <div class="thumb">Online Driver Hiring</div>
+          <p class="muted" style="margin-top:10px">A reliable and efficient online platform for hiring professional drivers at your convenience.</p>
+          <div class="stack"><span>HTML</span><span>Python</span><span>Flutter</span><span>MySQL</span></div>
+          <details style="margin-top:10px">
+            <summary><strong>What I did</strong></summary>
+            <ul>
+              <li>Built core booking flows and driver listing views.</li>
+              <li>Integrated MySQL data model for users, drivers, and bookings.</li>
+              <li>Prototyped Flutter screens for mobile experience.</li>
+            </ul>
+          </details>
+        </article>
+        
+        <article class="card pad">
+          <div class="thumb">Online Vehicle Rental</div>
+          <p class="muted" style="margin-top:10px">A simple system for renting vehicles online with clear inventory, availability and checkout flows.</p>
+          <div class="stack"><span>HTML</span><span>CSS</span><span>Java</span><span>MySQL</span></div>
+          <details style="margin-top:10px">
+            <summary><strong>What I did</strong></summary>
+            <ul>
+              <li>Designed responsive front‑end with Bootstrap‑like layout grid.</li>
+              <li>Implemented Java backend endpoints for rentals and returns.</li>
+              <li>Modeled relational schema: vehicles, bookings, users, payments.</li>
+            </ul>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="item">
+          <div class="row"><strong>Master of Computer Applications — Saintgits College of Engineering, Kottayam</strong><span class="muted">2024 – 2026</span></div>
+          <div class="muted">CGPA: 7.3 (as of sem 2)</div>
+        </div>
+        <div class="item">
+          <div class="row"><strong>Bachelor of Computer Applications — St. Berchmans College, Changanasserry</strong><span class="muted">2021 – 2024</span></div>
+          <div class="muted">CGPA: 7.8</div>
+        </div>
+        <div class="item">
+          <div class="row"><strong>Higher Secondary Education — NSS HSS, Karukachal</strong><span class="muted">2019 – 2021</span></div>
+          <div class="muted">Percentage: 97%</div>
+        </div>
+        <div class="item">
+          <div class="row"><strong>Secondary Education — Don Bosco HSS, Puthuppally</strong><span class="muted">2018 – 2019</span></div>
+          <div class="muted">Percentage: 87%</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <div class="grid cols-3">
+        <div class="card pad"><strong>Email</strong><div class="muted"><a href="mailto:abeljr279@gmail.com">abeljr279@gmail.com</a></div></div>
+        <div class="card pad"><strong>Phone</strong><div class="muted"><a href="tel:+919188645747">+91 9188645747</a></div></div>
+        <div class="card pad"><strong>Location</strong><div class="muted">Karukachal, Kottayam</div></div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
