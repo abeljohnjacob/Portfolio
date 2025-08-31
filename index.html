@@ -3,6 +3,7 @@
   <title>Abel John Jacob — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root
@@ -53,15 +54,28 @@
       padding:28px
     }
 
-    header.site
+    header.site 
     {
-      position:sticky;
-      top:0;z-index:20;
-      background:linear-gradient(180deg, rgba(11,16,32,.85), rgba(11,16,32,.55));
-      backdrop-filter: blur(8px);
-      border-bottom:1px solid rgba(138,162,255,.12)
-    
+        position: fixed;         
+        top: 0;
+        width: 100%;
+        z-index: 20;
+        background: linear-gradient(180deg, rgba(11,16,32,.85), rgba(11,16,32,.55));
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(138,162,255,.12);
+        padding: 4px 15px;      
     }
+
+    main.container 
+    {
+        padding-top: 150px; 
+    }
+
+    section 
+    {
+      scroll-margin-top: 160px; 
+    }
+    
     .nav
     {
       display:flex;
@@ -116,6 +130,13 @@
       border:1px solid rgba(138,162,255,.25);
       border-radius:12px;
       background:rgba(26,35,64,.6)
+    }
+
+    .nav a.btn.active {
+      background:rgba(26,35,64,.9);
+      box-shadow: inset 0 0 12px rgba(138,162,255,0.9),0 0 15px rgba(138,162,255,0.7);
+      border-color: var(--brand);
+      color: var(--brand-2);
     }
 
     .hero
@@ -197,6 +218,18 @@
     {
       background:linear-gradient(180deg, #23407a, #1f3a6f);
       border-color:rgba(106,163,255,.6)
+    }
+
+    .cv-btn 
+    {
+      background: #ffffff !important;
+      color: #0a192f !important;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 10px 18px;
+      border: 2px solid #ffffff !important;
+      box-shadow: 0 0 8px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
     }
 
     .grid
@@ -351,22 +384,29 @@
         </div>
       </div>
       <nav class="links">
+        <a class="btn" href="#home">Home</a>
         <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#education">Education</a>
         <a class="btn" href="#contact">Contact</a>
-        <a class="btn primary" href="CV.pdf" download>Download CV</a>
+        <a class="btn cv-btn" href="CV.pdf" target="blank">View CV</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero">
+    <section class="hero" id="home">
       <div class="card pad">
         <h2 class="title">Learning-Building-Growing in Tech</h2><br>
         <p style="text-align:justify">
           Myself Abel John Jacob , a BCA graduate currently doing MCA having a strong foundation in Web Development.
           Passionate about solving real-world problems through technology, I am continuously expanding my skills in areas like web development and emerging technologies. 
-          I thrive in collaborative environments and am eager to contribute to innovative projects while learning from experienced professionals.
+          I thrive in collaborative environments and am eager to contribute to innovative projects while learning from experienced professionals.<br><br>
+
+          I am particularly interested in building scalable web applications, exploring modern JavaScript frameworks, and strengthening my backend development skills. 
+          My long-term vision is to work on impactful projects that improve people’s lives and bridge the gap between technology and real-world challenges.<br><br>
+
+          Alongside my academic journey, I actively engage in open-source contributions, personal projects, and community learning initiatives. 
+          I believe continuous learning and teamwork are the keys to professional growth and innovation.
         </p>
         <div class="cta">
           <a class="btn">abeljr279@gmail.com</a>
@@ -501,10 +541,25 @@
 
     <section class="section" id="contact">
       <h2>Contact</h2>
+
       <div class="grid cols-3">
-        <div class="card pad"><strong>Email</strong><div class="muted"><a href="mailto:abeljr279@gmail.com">abeljr279@gmail.com</a></div></div>
-        <div class="card pad"><strong>Phone</strong><div class="muted"><a href="tel:+919188645747">+91 9188645747</a></div></div>
-        <div class="card pad"><strong>Location</strong><div class="muted">Karukachal, Kottayam</div></div>
+        <div class="card pad" style="display:flex; justify-content:center; align-items:center; height:120px;">
+          <a href="mailto:abeljr279@gmail.com">
+            <img src="https://img.icons8.com/color/96/gmail-new.png" alt="Gmail" style="width:50px; height:50px;">
+          </a>
+        </div>
+
+        <div class="card pad" style="display:flex; justify-content:center; align-items:center; height:120px;">
+          <a href="https://github.com/abeljohnjacob" target="_blank">
+            <i class="fab fa-github" style="font-size:50px; color:#fff;"></i>
+          </a>
+        </div>
+
+        <div class="card pad" style="display:flex; justify-content:center; align-items:center; height:120px;">
+          <a href="https://www.linkedin.com/in/abel-john-27ab15322/" target="_blank">
+            <i class="fab fa-linkedin" style="font-size:50px; color:#0a66c2;"></i>
+          </a>
+        </div>
       </div>
 
       <div class="card pad" style="margin-top:20px;">
@@ -531,7 +586,76 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".links .btn:not(.cv-btn)");
+
+    let clicked = false; 
+
+    function setActive(link) 
+    {
+      navLinks.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+    }
+
+    navLinks.forEach
+    (link => 
+      {
+        link.addEventListener
+        ("click", () => 
+          {
+            clicked = true;
+            setActive(link);
+            setTimeout
+            (
+              () => 
+              {
+                clicked = false;
+              }
+              , 800
+            );
+          }
+        );
+      }
+    );
+
+    window.addEventListener
+    ("scroll", () => 
+      {
+        if (clicked) return; 
+        let current = "";
+        sections.forEach
+        (section => 
+          {
+            const sectionTop = section.offsetTop - 200;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) 
+            {
+              current = section.getAttribute("id");
+            }
+          }
+        );
+
+      navLinks.forEach
+      (link => 
+        {
+          link.classList.remove("active");
+          if(link.getAttribute("href") === "#" + current) 
+          {
+            link.classList.add("active");
+          }
+        }
+      );
+    }
+  );
+
+  window.addEventListener
+  ("load", () => 
+    {
+      if (navLinks[0]) navLinks[0].classList.add("active");
+    }
+  );
+</script>
+
 </body>
 </html>
 
