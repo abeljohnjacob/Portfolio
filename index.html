@@ -132,7 +132,8 @@
       background:rgba(26,35,64,.6)
     }
 
-    .nav a.btn.active {
+    .nav a.btn.active 
+    {
       background:rgba(26,35,64,.9);
       box-shadow: inset 0 0 12px rgba(138,162,255,0.9),0 0 15px rgba(138,162,255,0.7);
       border-color: var(--brand);
@@ -145,7 +146,6 @@
       grid-template-columns:1.25fr .75fr;
       gap:28px;
       margin-top:24px
-    
     }
 
     .card
@@ -250,7 +250,7 @@
     
     .section
     {
-      margin-top:36px
+      margin-top:40px
     }
 
     .section h2
@@ -270,7 +270,7 @@
     {
       padding:16px;
       border-radius:14px;
-      background:rgba(26,35,64,.5);
+      background:linear-gradient(180deg, var(--panel), var(--soft));
       border:1px solid rgba(138,162,255,.15)
     }
 
@@ -424,30 +424,37 @@
                 <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>Angular</span>
               </div>
             </div>
+
             <div>
               <strong>Cybersecurity Tools</strong>
               <div class="stack">
                 <span>Nmap</span><span>Wireshark</span>
               </div>
             </div>
+
             <div>
               <strong>Version Control</strong>
               <div class="stack"><span>Git</span></div>
             </div>
+
             <div>
               <strong>Soft Skills</strong>
               <div class="stack"><span>Communication</span><span>Teamwork</span></div>
             </div>
+
           </div>
         </div>
+
         <div class="section">
           <h2>Languages</h2>
+
           <div class="langbars">
             <div><strong>English</strong><div class="bar" aria-label="English level"><i style="width:88%"></i></div><small class="muted">Advanced</small></div>
             <div><strong>Hindi</strong><div class="bar" aria-label="Hindi level"><i style="width:75%"></i></div><small class="muted">Proficient</small></div>
             <div><strong>Malayalam</strong><div class="bar" aria-label="Malayalam level"><i style="width:100%"></i></div><small class="muted">Native</small></div>
             <div><strong>Tamil</strong><div class="bar" aria-label="Tamil level"><i style="width:60%"></i></div><small class="muted">Intermediate</small></div>
           </div>
+
         </div>
       </aside>
     </section>
@@ -457,61 +464,35 @@
       <div class="grid cols-2 projects">
         
         <article class="card pad">
-          <div class="thumb">Plot Point</div>
-          <p class="muted" style="margin-top:10px">A comprehensive real estate platform to explore, compare, and recommend properties with personalized suggestions.</p>
-          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python - Flask</span><span>Scikit-Learn</span></div>
-          <details style="margin-top:10px">
-            <summary><strong>Key Features</strong></summary>
-            <ul>
-              <li>Developed property listing, search, and filtering modules with Django backend.</li>
-              <li>Created recommendation system using Scikit-Learn for personalized property suggestions.</li>
-              <li>Integrated interactive UI with HTML, CSS, and JavaScript for smooth user experience.</li>
-            </ul>
-          </details>
-        </article>
-
-        <article class="card pad">
-          <div class="thumb">Online Vehicle Rental</div>
-          <p class="muted" style="margin-top:10px">A simple system for renting vehicles online with clear inventory, availability and checkout flows.</p>
-          <div class="stack"><span>HTML</span><span>CSS</span><span>Java</span><span>MySQL</span></div>
-          <details style="margin-top:10px">
-            <summary><strong>Key Features</strong></summary>
-            <ul>
-              <li>Designed responsive front‑end with Bootstrap‑like layout grid.</li>
-              <li>Implemented Java backend endpoints for rentals and returns.</li>
-              <li>Modeled relational schema: vehicles, bookings, users, payments.</li>
-            </ul>
-          </details>
-        </article>
-
-        <article class="card pad">
-          <div class="thumb">Online Movie Booking</div>
+          <div class="thumb">Campus Connect</div>
             <p class="muted" style="margin-top:10px">
-              A simple, fast platform to browse movies, pick showtimes, and reserve seats—built for web and backend reliability.
+              A platform for seamless facility booking, real-time schedule tracking, and student-faculty communication.
             </p>
-          <div class="stack"><span>HTML</span><span>CSS</span><span>Python</span><span>MySQL</span></div>
-          <details style="margin-top:10px">
-            <summary><strong>Key Features</strong></summary>
-            <ul>
-              <li>Implemented core flows: movie listings, showtimes, and interactive seat selection.</li>
-              <li>Designed MySQL schema for movies, theatres, screens, shows, users, and bookings.</li>
-              <li>Built Python backend endpoints and basic admin pages for managing movies and show schedules.</li>
-            </ul>
-          </details>
+          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python/Flask</span><span>SQLite</span></div>
+        </article>
+
+        <article class="card pad">
+          <div class="thumb">Plot Point</div>
+            <p class="muted" style="margin-top:10px">
+              A comprehensive real estate platform to explore, compare, and recommend properties with personalized suggestions.
+            </p>
+          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python - Flask</span><span>Scikit-Learn</span></div>
+        </article>
+
+        <article class="card pad">
+          <div class="thumb">Smart Crack</div>
+            <p class="muted" style="margin-top:10px">
+              An interactive Android app for mastering aptitude through timed, level-based quizzes. 
+            </p>
+          <div class="stack"><span>XML</span><span>Java</span><span>Firebase</span></div>
         </article>
 
         <article class="card pad">
           <div class="thumb">Pro Pilet</div>
-          <p class="muted" style="margin-top:10px">A reliable and efficient online platform for hiring professional drivers at your convenience.</p>
+            <p class="muted" style="margin-top:10px">
+              A reliable and efficient online platform for hiring professional drivers at your convenience.
+            </p>
           <div class="stack"><span>HTML</span><span>Python</span><span>Flutter</span><span>MySQL</span></div>
-          <details style="margin-top:10px">
-            <summary><strong>Key Features</strong></summary>
-            <ul>
-              <li>Built core booking flows and driver listing views.</li>
-              <li>Integrated MySQL data model for users, drivers, and bookings.</li>
-              <li>Prototyped Flutter screens for mobile experience.</li>
-            </ul>
-          </details>
         </article>
 
       </div>
@@ -520,18 +501,22 @@
     <section class="section" id="education">
       <h2>Education</h2>
       <div class="timeline">
+
         <div class="item">
           <div class="row"><strong>Master of Computer Applications — Saintgits College of Engineering, Kottayam</strong><span class="muted">2024 – 2026</span></div>
-          <div class="muted">CGPA: 7.3 (as of sem 2)</div>
+          <div class="muted">CGPA: 7.4</div>
         </div>
+
         <div class="item">
           <div class="row"><strong>Bachelor of Computer Applications — St. Berchmans College, Changanasserry</strong><span class="muted">2021 – 2024</span></div>
           <div class="muted">CGPA: 7.8</div>
         </div>
+
         <div class="item">
           <div class="row"><strong>Higher Secondary Education — NSS HSS, Karukachal</strong><span class="muted">2019 – 2021</span></div>
           <div class="muted">Percentage: 97%</div>
         </div>
+
         <div class="item">
           <div class="row"><strong>Secondary Education — Don Bosco HSS, Puthuppally</strong><span class="muted">2018 – 2019</span></div>
           <div class="muted">Percentage: 87%</div>
@@ -658,4 +643,3 @@
 
 </body>
 </html>
-
