@@ -63,7 +63,7 @@
         background: linear-gradient(180deg, rgba(11,16,32,.85), rgba(11,16,32,.55));
         backdrop-filter: blur(8px);
         border-bottom: 1px solid rgba(138,162,255,.12);
-        padding: 4px 15px;      
+        padding: 0;      
     }
 
     main.container 
@@ -82,7 +82,6 @@
       align-items:center;
       gap:18px;
       justify-content:space-between
-    
     }
 
     .brand
@@ -94,8 +93,8 @@
 
     .brand .avatar 
     {
-      width: 80px;          
-      height: 80px;
+      width: 85px;          
+      height: 85px;
       border-radius: 50%;
       overflow: hidden;
       box-shadow: var(--shadow);
@@ -114,16 +113,19 @@
 
     .brand h1
     {
-      font-size:18px;
-      margin:0
+      font-size:26px;
+      line-height:1.15;
+      margin:0 0 1px;
+      font-weight:800;
     }
 
     .brand small
     {
       display:block;
       color:var(--muted);
+      font-size:16px;
       font-weight:500;
-      margin-top:-2px
+      margin-top:0;
     }
 
     .nav a.btn
@@ -156,7 +158,6 @@
       border:1px solid rgba(138,162,255,.15);
       border-radius:var(--radius);
       box-shadow:var(--shadow)
-    
     }
 
     .card.pad
@@ -295,7 +296,25 @@
       background:linear-gradient(135deg, #2a3a70, #18224b);
       border:1px dashed rgba(255,255,255,.2);
       display:grid;place-items:center;
-      font-weight:700
+      font-weight:700;
+      overflow:hidden;        
+      position:relative;
+    }
+
+    .projects .card .thumb img
+    {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+    }
+
+    .projects-title
+    {
+      margin:14px 0 0px;
+      font-size:19px;
+      font-weight:700;
     }
 
     .stack
@@ -404,11 +423,12 @@
           My academic journey and hands-on internship experience have given me a strong foundation in Web and Application Development, Data Handling, and Project Execution. 
           Whether I'm building scalable Web Applications, analyzing operational workflows, or collaborating with cross-functional teams, I focus on creating reliable, user-centered solutions.<br><br>
 
-          I thrive at the intersection of technology, business processes, and team collaboration. With a continuous learning mindset and strong adaptability, 
-          I am actively seeking opportunities across software development, banking technology, and business operations. 
-          I aim to apply my technical skill set and problem-solving abilities to drive efficiency and support organizational growth.<br><br>
+          I view software development as a powerful tool to solve operational bottlenecks. Having a strong technical foundation allows me to analyze complex workflows and build reliable digital solutions from scratch. 
+          I am eager to bring this blend of technical execution and systems-thinking to fast-paced roles in banking technology and software operations.My approach prioritizes secure coding practices and efficient database management, 
+          which are critical for financial tech infrastructure.<br><br>
 
           Explore my featured projects, core technical skills, and practical experience below to see how I translate ideas into practical, high-value outcomes.
+          Feel free to connect with me via Gmail, GitHub or LinkedIn.
         </p>
         <div class="cta">
           <a class="btn">abeljr279@gmail.com</a>
@@ -425,9 +445,9 @@
               <div class="stack">
                 <span>HTML</span>
                 <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Angular</span>
-                <span>Flask</span>
+                <span>JS</span>
+                <span>TS/Angular</span>
+                <span>Python/Flask</span>
               </div>
             </div>
 
@@ -480,28 +500,32 @@
       <div class="grid cols-2 projects">
         
         <article class="card pad">
-          <div class="thumb">Campus Connect</div>
-            <p class="muted" style="margin-top:10px">
+          <div class="thumb"><img src="stickers/campus-connect.svg" alt="Campus Connect"></div>
+            <h3 class="projects-title">Campus Connect</h3>
+            <p class="muted" style="margin-top:4px">
               A platform for seamless facility booking, real-time schedule tracking, and student-faculty communication.
             </p>
           <div class="stack">
             <span>HTML</span>
             <span>CSS</span>
             <span>JavaScript</span>
+            <span>Bootstrap</span>
             <span>Python/Flask</span>
             <span>SQLite</span>
           </div>
         </article>
 
         <article class="card pad">
-          <div class="thumb">Plot Point</div>
-            <p class="muted" style="margin-top:10px">
+          <div class="thumb"><img src="stickers/plot-point.svg" alt="Plot Point"></div>
+            <h3 class="projects-title">Plot Point</h3>
+            <p class="muted" style="margin-top:4px">
               A comprehensive real estate platform to explore, compare, and recommend properties with personalized suggestions.
             </p>
           <div class="stack">
             <span>HTML</span>
             <span>CSS</span>
             <span>JavaScript</span>
+            <span>Bootstrap</span>
             <span>Python/Flask</span>
             <span>SQLite</span>
             <span>Scikit-Learn</span>
@@ -509,8 +533,9 @@
         </article>
 
         <article class="card pad">
-          <div class="thumb">Smart Crack</div>
-            <p class="muted" style="margin-top:10px">
+          <div class="thumb"><img src="stickers/smart-crack.svg" alt="Smart Crack"></div>
+            <h3 class="projects-title">Smart Crack</h3>
+            <p class="muted" style="margin-top:4px">
               An interactive Android app for mastering aptitude through timed, level-based quizzes. 
             </p>
           <div class="stack">
@@ -521,14 +546,16 @@
         </article>
 
         <article class="card pad">
-          <div class="thumb">Pro Pilet</div>
-            <p class="muted" style="margin-top:10px">
+          <div class="thumb"><img src="stickers/pro-pilet.svg" alt="Pro Pilet"></div>
+            <h3 class="projects-title">Pro Pilet</h3>
+            <p class="muted" style="margin-top:4px">
               A reliable and efficient online platform for hiring professional drivers at your convenience.
             </p>
           <div class="stack">
             <span>HTML</span>
             <span>CSS</span>
             <span>JavaScript</span>
+            <span>Bootstrap</span>
             <span>Python/Flask</span>
             <span>Flutter</span>
             <span>MySQL</span>

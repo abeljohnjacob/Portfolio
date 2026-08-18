@@ -1,0 +1,68 @@
+<svg viewBox="0 0 590 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgCC" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4c3fb0"/>
+      <stop offset="55%" stop-color="#2a3a70"/>
+      <stop offset="100%" stop-color="#18224b"/>
+    </linearGradient>
+    <linearGradient id="glowCC" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff8fb3"/>
+      <stop offset="100%" stop-color="#8ef"/>
+    </linearGradient>
+    <linearGradient id="buildA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd166"/>
+      <stop offset="100%" stop-color="#f6f7fb"/>
+    </linearGradient>
+    <linearGradient id="buildB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6aa3ff"/>
+      <stop offset="100%" stop-color="#f6f7fb"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="590" height="200" fill="url(#bgCC)"/>
+
+  <g transform="translate(50,42)">
+    <rect x="0" y="0" width="98" height="140" rx="6" fill="url(#buildA)"/>
+    <rect x="0" y="0" width="98" height="20" fill="#f4a900"/>
+    <rect x="14" y="36" width="17" height="19" fill="#22305c"/>
+    <rect x="41" y="36" width="17" height="19" fill="#22305c"/>
+    <rect x="68" y="36" width="17" height="19" fill="#22305c"/>
+    <rect x="14" y="69" width="17" height="19" fill="#22305c"/>
+    <rect x="41" y="69" width="17" height="19" fill="#22305c"/>
+    <rect x="68" y="69" width="17" height="19" fill="#22305c"/>
+    <rect x="37" y="105" width="24" height="35" fill="#22305c"/>
+  </g>
+
+  <g transform="translate(440,20)">
+    <rect x="0" y="0" width="85" height="165" rx="6" fill="url(#buildB)"/>
+    <rect x="0" y="0" width="85" height="20" fill="#3f7bdc"/>
+    <rect x="12" y="34" width="15" height="16" fill="#22305c"/>
+    <rect x="35" y="34" width="15" height="16" fill="#22305c"/>
+    <rect x="58" y="34" width="15" height="16" fill="#22305c"/>
+    <rect x="12" y="63" width="15" height="16" fill="#22305c"/>
+    <rect x="35" y="63" width="15" height="16" fill="#22305c"/>
+    <rect x="58" y="63" width="15" height="16" fill="#22305c"/>
+    <rect x="12" y="92" width="15" height="16" fill="#22305c"/>
+    <rect x="35" y="92" width="15" height="16" fill="#22305c"/>
+    <rect x="58" y="92" width="15" height="16" fill="#22305c"/>
+    <rect x="30" y="130" width="25" height="35" fill="#22305c"/>
+  </g>
+
+  <path d="M 150 115 Q 295 65 440 100" fill="none" stroke="url(#glowCC)" stroke-width="5" stroke-dasharray="2 12" stroke-linecap="round"/>
+  <circle cx="150" cy="115" r="8" fill="#6ee7b7"/>
+  <circle cx="440" cy="100" r="8" fill="#ff8fb3"/>
+
+  <g transform="translate(233,8)">
+    <rect x="0" y="0" width="110" height="92" rx="16" fill="#0b1020" stroke="url(#glowCC)" stroke-width="3"/>
+    <rect x="0" y="0" width="110" height="26" rx="16" fill="url(#glowCC)"/>
+    <rect x="0" y="16" width="110" height="10" fill="url(#glowCC)"/>
+    <circle cx="27" cy="13" r="5" fill="#0b1020"/>
+    <circle cx="83" cy="13" r="5" fill="#0b1020"/>
+    <rect x="16" y="42" width="18" height="18" rx="4" fill="#ffd166"/>
+    <rect x="46" y="42" width="18" height="18" rx="4" fill="rgba(255,255,255,0.3)"/>
+    <rect x="76" y="42" width="18" height="18" rx="4" fill="rgba(255,255,255,0.3)"/>
+    <rect x="16" y="66" width="18" height="18" rx="4" fill="rgba(255,255,255,0.3)"/>
+    <rect x="46" y="66" width="18" height="18" rx="4" fill="#6ee7b7"/>
+    <rect x="76" y="66" width="18" height="18" rx="4" fill="rgba(255,255,255,0.3)"/>
+  </g>
+</svg>
