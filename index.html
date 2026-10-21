@@ -70,8 +70,9 @@
     h2.big{font-size:clamp(30px,4.5vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:14px}
     .purple{background:radial-gradient(900px 500px at 50% 0,#1d1a23 0%,transparent 70%)}
     .center{text-align:center}
+    br.m{display:none}
 
-    /* Text alignment */
+    /* TEXT ALIGNMENTS */
     .about p,.stats,.side p,.cards,.projects{text-align:justify}
     .langs,.edu,.contact{text-align:left}
 
@@ -136,13 +137,32 @@
     /* FOOTER */
     footer{padding:0 7vw 30px;text-align:center;overflow:hidden}
     .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:30px;flex-wrap:wrap;gap:10px}
+    .foot .btn{font-family:Inter,system-ui,sans-serif;font-size:14px}
 
+    /* MOBILE */
     @media(max-width:900px){
-      header{padding:14px 18px}nav a:not(.pill){display:none}
+      header{flex-direction:column;align-items:stretch;gap:6px;padding:10px 18px 12px}
+      .logo{font-size:20px;line-height:1.3}
+      nav{gap:6px;justify-content:space-between}
+      nav a{font-size:12px}
+      .pill{position:absolute;top:10px;right:18px;padding:5px 14px}
+      section{padding:100px 6vw 72px}
+
+      br.m{display:inline}br.d{display:none}
+      .about h2.big{font-size:clamp(24px,7vw,40px)}
+
+      .hero-wrap,.hero{height:100vh;height:100svh}
       .hero-in,.about,.contact{grid-template-columns:1fr}.side{display:none}
-      .cards,.projects,.langs{grid-template-columns:1fr}.ctas{right:auto;left:7vw;bottom:40px}.scroll-hint{display:none}
-      .about{gap:30px}.portrait{max-width:280px}
+      .headline{font-size:clamp(34px,11vw,60px)}
       .headline #h1{-webkit-text-stroke-width:1.2px}
+      .ctas{right:auto;left:7vw;bottom:40px}.scroll-hint{display:none}
+      .dots{top:auto;bottom:57px;right:7vw;transform:none;flex-direction:row}
+
+      .about{gap:30px}.portrait{max-width:280px}
+      .stats,.cards,.projects,.langs{grid-template-columns:1fr}
+      .contact{padding:20px}
+
+      .foot{justify-content:center;text-align:center}
     }
     @media(prefers-reduced-motion:reduce){.track{animation:none}html{scroll-behavior:auto}.headline span{transition:none}}
   </style>
@@ -206,7 +226,7 @@
       </div>
 
       <div>
-        <h2 class="big">Learning-Building-Growing<br>in Tech</h2>
+        <h2 class="big">Learning-Building-<br class="m">Growing<br class="d"> in Tech</h2>
         <p>An MCA graduate passionate about building impactful technology solutions, streamlining complex operations, and solving real-world business challenges. During my academics and internships, I focused on how software applications interact with business workflows and system configurations. My main focus areas are:</p>
         <div class="stats">
           <div class="stat"><b>Software Development</b><small>Experienced in building web applications with a core focus on secure coding practices.</small></div>
@@ -375,15 +395,14 @@
     const hl=document.getElementById('headline'),
     h1=document.getElementById('h1'),h2=document.getElementById('h2'),
     kk=document.getElementById('kicker'),ss=document.getElementById('sub'),
-    dots=[...document.querySelectorAll('#dots button')],
-    heroEl=document.querySelector('.hero');
-        let cur=0,timer,swapTimer;
+    dots=[...document.querySelectorAll('#dots button')];
+    let cur=0,timer,swapTimer;
 
     function show(i){
       cur=i;
       dots.forEach((d,n)=>d.classList.toggle('on',n===i));
       hl.classList.add('swap');
-      clearTimeout(swapTimer);  // avoids overlapping swaps on fast clicks
+      clearTimeout(swapTimer);  
       swapTimer=setTimeout(()=>{h1.textContent=steps[i].a;h2.textContent=steps[i].b;kk.textContent=steps[i].k;ss.textContent=steps[i].s;hl.classList.remove('swap')},350);
     }
 
@@ -408,7 +427,7 @@
       lock=l.getAttribute('href').slice(1);
       setActive(lock);
       clearTimeout(lockTimer);
-      lockTimer=setTimeout(unlock,1200);  
+      lockTimer=setTimeout(unlock,1200);
     }));
 
     window.addEventListener('scroll',()=>{
