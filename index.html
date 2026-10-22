@@ -98,7 +98,7 @@
     @keyframes slide{to{transform:translateX(-50%)}}
 
     /* SKILLS */
-    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;max-width:1190px;margin-inline:auto}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;max-width:1200px;margin-inline:auto}
     .card{padding:26px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
     .card h3{font-size:19px;margin-bottom:8px}.card p{font-size:14px;color:var(--muted)}
     .mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
@@ -117,17 +117,22 @@
     .proj h3{font-size:20px}.proj p{font-size:14px;color:var(--muted);margin:6px 0 14px}
 
     /* EDUCATION */
-    .edu{max-width:800px;margin:40px auto 0;border-left:1px solid var(--line)}
+    .edu{width:fit-content;max-width:100%;margin:40px auto 0;border-left:1px solid var(--line)}
     .edu div{padding:0 0 28px 28px;position:relative}
     .edu div::before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
     .edu b{display:block}.edu span{font-size:13px;color:var(--muted)}.edu em{font-family:var(--mono);font-size:12px;color:var(--accent);font-style:normal}
 
     /* CONTACT */
-    .contact{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1000px;margin:40px auto 0;padding:26px;border:1px solid var(--line);border-radius:28px;background:var(--glass)}
+    .contact{display:grid;grid-template-columns:max-content 1fr;gap:50px;max-width:850px;margin:40px auto 0;padding:26px;border:1px solid var(--line);border-radius:28px;background:var(--glass)}
+    .info{display:flex;flex-direction:column;gap:18px;margin-top:22px}
+    .info a,.info p{display:flex;align-items:center;gap:14px;font-size:15px;color:var(--muted);transition:color .2s}
+    .info a:hover{color:var(--accent)}
+    .info i{color:var(--accent);width:1.25em;text-align:center;font-size:18px}
+    .gmail-icon{height:1em;background:currentColor;-webkit-mask:url(https://cdn.simpleicons.org/gmail) center/contain no-repeat;mask:url(https://cdn.simpleicons.org/gmail) center/contain no-repeat}
     .links{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+    .info + .links{margin-top:28px}
     .links a{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--line);border-radius:14px;font-size:14px;transition:background .2s,border-color .2s}
     .links a i{color:var(--accent);display:inline-block;width:1.25em;text-align:center;font-size:14px}
-    .gmail-icon{height:1em;background:currentColor;-webkit-mask:url(https://cdn.simpleicons.org/gmail) center/contain no-repeat;mask:url(https://cdn.simpleicons.org/gmail) center/contain no-repeat}
     .links a:hover{background:rgba(255,255,255,.08);border-color:rgba(var(--accent-rgb),.45)}
     form{display:grid;gap:10px}
     input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--text);font:inherit;font-size:14px}
@@ -138,6 +143,17 @@
     footer{padding:0 7vw 30px;text-align:center;overflow:hidden}
     .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:30px;flex-wrap:wrap;gap:10px}
     .foot .btn{font-family:Inter,system-ui,sans-serif;font-size:14px}
+
+    /* CARD HOVER */
+    .stat,.card,.proj{transition:border-color .25s,transform .25s,box-shadow .25s}
+      @media(hover:hover){
+        .stat:hover,.card:hover,.proj:hover{
+          border-color:var(--accent);
+          transform:translateY(-4px);
+          box-shadow:0 0 0 1px var(--accent),0 14px 34px rgba(var(--accent-rgb),.12)
+        }
+    }
+    @media(prefers-reduced-motion:reduce){.stat,.card,.proj{transition:none}.stat:hover,.card:hover,.proj:hover{transform:none}}
 
     /* MOBILE */
     @media(max-width:900px){
@@ -152,12 +168,14 @@
       .about h2.big{font-size:clamp(24px,7vw,40px)}
 
       .hero-wrap,.hero{height:100vh;height:100svh}
-      .hero-in,.about,.contact{grid-template-columns:1fr}.side{display:none}
+      .hero-in,.about,.contact{grid-template-columns:1fr}
+      .side{display:block;max-width:none;font-size:13px;margin-top:4px}
+      .side p{text-align:left}
       .headline{font-size:clamp(34px,11vw,60px)}
       .headline #h1{-webkit-text-stroke-width:1.2px}
-      .ctas{right:auto;left:7vw;bottom:40px}.scroll-hint{display:none}
+      .ctas{right:auto;left:7vw;bottom:40px}
+      .scroll-hint{display:block;left:7vw;bottom:96px;font-size:11px}
       .dots{top:auto;bottom:57px;right:7vw;transform:none;flex-direction:row}
-
       .about{gap:30px}.portrait{max-width:280px}
       .stats,.cards,.projects,.langs{grid-template-columns:1fr}
       .contact{padding:20px}
@@ -247,7 +265,7 @@
       <div class="card">
         <h3>Software Development</h3>
         <p>Building responsive, secure web applications with robust backend databases and clean code.</p>
-        <div class="mini"><span>Python</span><span>TypeScript</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Angular</span><span>Flask</span><span>MySQL</span><span>SQLite</span></div>
+        <div class="mini"><span>Python</span><span>TypeScript</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>XML</span><span>Bootstrap</span><span>Angular</span><span>Flask</span><span>Scikit-Learn</span><span>MySQL</span><span>SQLite</span></div>
       </div>
 
       <div class="card">
@@ -330,9 +348,15 @@
     <h2 class="big">Get in touch</h2>
     <div class="contact">
       <div>
-        <b>Contact</b>
+        <b>Connect with me</b>
+
+        <div class="info">
+          <a href="mailto:abeljr279@gmail.com"><i class="gmail-icon"></i>abeljr279@gmail.com</a>
+          <a href="tel:+919188645747"><i class="fa-solid fa-phone"></i>+91 9188645747</a>
+          <p><i class="fa-solid fa-location-dot"></i>Kottayam, Kerala, India</p>
+        </div>
+
         <div class="links">
-          <a href="mailto:abeljr279@gmail.com"><i class="gmail-icon"></i> abeljr279@gmail.com</a>
           <a href="https://github.com/abeljohnjacob" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
           <a href="https://www.linkedin.com/in/abel-john-jacob-27ab15322/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
         </div>
@@ -361,7 +385,6 @@
     /* Tech chips marquee */
     const techs=[
       ['Python','devicon-python-plain colored'],
-      ['Java','devicon-java-plain colored'],
       ['TypeScript','devicon-typescript-plain colored'],
       ['JavaScript','devicon-javascript-plain colored'],
       ['HTML','devicon-html5-plain colored'],
@@ -370,11 +393,9 @@
       ['Bootstrap','devicon-bootstrap-plain colored'],
       ['Angular','devicon-angularjs-plain colored'],
       ['Flask','devicon-flask-original','#ffffff'],
-      ['Flutter','devicon-flutter-plain colored'],
       ['Scikit-Learn','devicon-scikitlearn-plain colored'],
       ['MySQL','devicon-mysql-plain colored'],
       ['SQLite','devicon-sqlite-plain colored'],
-      ['Firebase','devicon-firebase-plain colored'],
       ['Excel','fa-solid fa-file-excel','#21a366'],
       ['PowerPoint','fa-solid fa-file-powerpoint','#d35230'],
       ['Word','fa-solid fa-file-word','#2b7cd3']
