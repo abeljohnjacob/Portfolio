@@ -68,13 +68,13 @@
     section{padding:110px 7vw;position:relative}
     .tag{display:inline-block;font-family:var(--mono);font-size:11px;padding:5px 12px;border:1px solid rgba(var(--accent-rgb),.4);border-radius:99px;color:var(--accent);margin-bottom:18px}
     h2.big{font-size:clamp(30px,4.5vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:14px}
-    .purple{background:radial-gradient(900px 500px at 50% 0,#1d1a23 0%,transparent 70%)}
+    .lime{background:radial-gradient(900px 500px at 50% 0,#1d1a23 0%,transparent 70%)}
     .center{text-align:center}
     br.m{display:none}
 
     /* TEXT ALIGNMENTS */
     .about p,.stats,.side p,.cards,.projects{text-align:justify}
-    .langs,.edu,.contact{text-align:left}
+    .langs,.contact{text-align:left}
 
     /* ABOUT */
     .about{display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;max-width:1100px;margin:0 auto}
@@ -116,11 +116,31 @@
     .thumb img{width:100%;height:100%;object-fit:contain}
     .proj h3{font-size:20px}.proj p{font-size:14px;color:var(--muted);margin:6px 0 14px}
 
-    /* EDUCATION */
-    .edu{width:fit-content;max-width:100%;margin:40px auto 0;border-left:1px solid var(--line)}
-    .edu div{padding:0 0 28px 28px;position:relative}
-    .edu div::before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
-    .edu b{display:block}.edu span{font-size:13px;color:var(--muted)}.edu em{font-family:var(--mono);font-size:12px;color:var(--accent);font-style:normal}
+    /* CERTIFICATIONS */
+    .certs{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:40px auto 0;max-width:1100px;text-align:left}
+    .cert{flex:0 1 calc((100% - 36px)/3);display:flex;flex-direction:column;padding:22px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+    .cert-ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.3);color:var(--accent);font-size:18px;margin-bottom:16px}
+    .cert-ic img{width:28px;height:28px;object-fit:contain;filter:url(#lime)}
+    .cert em{font-family:var(--mono);font-size:13px;color:var(--accent);font-style:normal;margin-bottom:6px}
+    .cert h3{font-size:16px;line-height:1.35;margin-bottom:6px}
+    .cert span.org{font-size:13px;color:var(--muted)}
+    .cert span.org{margin-bottom:18px}
+    .cert-link{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;padding:8px 18px;border-radius:99px;background:var(--accent);color:#10110a;border:1px solid var(--accent);font-size:13px;font-weight:600;transition:transform .2s,box-shadow .2s}
+    .cert-link:hover{transform:translateY(-2px)}
+    @media(max-width:1000px){.cert{flex-basis:calc((100% - 18px)/2)}}
+
+
+    /* CERTIFICATE VIEWER */
+    .viewer{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:3vh 3vw;background:rgba(9,8,13,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .viewer.open{display:flex}
+    .viewer-box{width:min(1000px,100%);height:100%;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:20px;background:var(--bg-2);overflow:hidden;box-shadow:0 30px 80px #000a}
+    .viewer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
+    .viewer-title{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .viewer-actions{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+    .viewer-close{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:var(--text);font-size:16px;cursor:pointer;transition:border-color .2s,color .2s}
+    .viewer-close:hover{border-color:var(--accent);color:var(--accent)}
+    .viewer iframe{flex:1;width:100%;border:0;background:#fff}
+    body.no-scroll{overflow:hidden}
 
     /* CONTACT */
     .contact{display:grid;grid-template-columns:max-content 1fr;gap:50px;max-width:850px;margin:40px auto 0;padding:26px;border:1px solid var(--line);border-radius:28px;background:var(--glass)}
@@ -145,22 +165,25 @@
     .foot .btn{font-family:Inter,system-ui,sans-serif;font-size:14px}
 
     /* CARD HOVER */
-    .stat,.card,.proj{transition:border-color .25s,transform .25s,box-shadow .25s}
+    .stat,.card,.proj,.cert{transition:border-color .25s,transform .25s,box-shadow .25s}
       @media(hover:hover){
-        .stat:hover,.card:hover,.proj:hover{
+        .stat:hover,.card:hover,.proj:hover,.cert:hover{
           border-color:var(--accent);
           transform:translateY(-4px);
           box-shadow:0 0 0 1px var(--accent),0 14px 34px rgba(var(--accent-rgb),.12)
         }
     }
-    @media(prefers-reduced-motion:reduce){.stat,.card,.proj{transition:none}.stat:hover,.card:hover,.proj:hover{transform:none}}
+    @media(prefers-reduced-motion:reduce){.stat,.card,.proj,.cert{transition:none}.stat:hover,.card:hover,.proj:hover,.cert:hover{transform:none}}
+
+    @media(max-width:1150px){header{padding:16px 24px}nav{gap:16px}}
 
     /* MOBILE */
     @media(max-width:900px){
       header{flex-direction:column;align-items:stretch;gap:6px;padding:10px 18px 12px}
       .logo{font-size:20px;line-height:1.3}
-      nav{gap:6px;justify-content:space-between}
-      nav a{font-size:12px}
+      nav{gap:14px;justify-content:flex-start;overflow-x:auto;padding:0 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+      nav::-webkit-scrollbar{display:none}
+      nav a{font-size:12px;white-space:nowrap;flex:0 0 auto}
       .pill{position:absolute;top:10px;right:18px;padding:5px 14px}
       section{padding:100px 6vw 72px}
       br.m{display:inline}br.d{display:none}
@@ -175,6 +198,7 @@
       .dots{top:auto;bottom:57px;right:7vw;transform:none;flex-direction:row}
       .about{gap:30px}.portrait{max-width:280px;margin-inline:auto}
       .stats,.cards,.projects,.langs{grid-template-columns:1fr}
+      .cert{flex-basis:100%}
       .contact{padding:20px}
       .foot{justify-content:center;text-align:center}
     }
@@ -191,7 +215,7 @@
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
       <a class="pill" href="CV_Creative.pdf" target="_blank" rel="noopener">View CV</a>
     </nav>
@@ -228,7 +252,7 @@
   </div>
 
   <!-- About -->
-  <section id="about" class="purple">
+  <section id="about" class="lime">
     <div class="center">
       <span class="tag">// ABOUT</span>
     </div>
@@ -252,7 +276,7 @@
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="purple center">
+  <section id="skills" class="lime center">
     <span class="tag">// SKILLS</span>
     <h2 class="big">Stack &amp; Speech Behind the Work</h2>
     <div class="marquee" id="marquee"></div>
@@ -292,33 +316,33 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="purple center">
+  <section id="projects" class="lime center">
     <span class="tag">// PROJECTS</span>
     <h2 class="big">From Idea to Interface</h2>
     <div class="projects">
       <article class="proj">
-        <div class="thumb"><img src="Stickers/campus-connect.svg" alt="Campus Connect"></div>
+        <div class="thumb"><img src="Projects/campus-connect.svg" alt="Campus Connect"></div>
         <h3>Campus Connect</h3>
         <p>A college facility management web platform for booking rooms and labs, tracking schedules and managing campus resources. It also improves communication between students and faculty through a chat system.</p>
         <div class="mini"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>Python/Flask</span><span>SQLite</span></div>
       </article>
 
       <article class="proj">
-        <div class="thumb"><img src="Stickers/plot-point.svg" alt="Plot Point"></div>
+        <div class="thumb"><img src="Projects/plot-point.svg" alt="Plot Point"></div>
         <h3>Plot Point</h3>
         <p>A real estate web platform that allows users to explore and compare properties based on their preferences. It also provides personalized property recommendations to simplify the search and support informed decisions.</p>
         <div class="mini"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>Python/Flask</span><span>Scikit-Learn</span><span>SQLite</span></div>
       </article>
 
       <article class="proj">
-        <div class="thumb"><img src="Stickers/smart-crack.svg" alt="Smart Crack"></div>
+        <div class="thumb"><img src="Projects/smart-crack.svg" alt="Smart Crack"></div>
         <h3>Smart Crack</h3>
         <p>An aptitude quiz android application featuring timed tests and progressive difficulty levels. It helps users practise aptitude questions, assess their performance and improve their problem-solving skills.</p>
         <div class="mini"><span>XML</span><span>Java</span><span>Firebase</span></div>
       </article>
 
       <article class="proj">
-        <div class="thumb"><img src="Stickers/pro-pilet.svg" alt="Pro Pilet"></div>
+        <div class="thumb"><img src="Projects/pro-pilet.svg" alt="Pro Pilet"></div>
         <h3>Pro Pilet</h3>
         <p>An online driver-hiring web platform that connects users with professional drivers for convenient booking. It simplifies the hiring process by providing an accessible way to find drivers based on individual needs.</p>
         <div class="mini"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>Python/Flask</span><span>Flutter</span><span>MySQL</span></div>
@@ -326,20 +350,82 @@
     </div>
   </section>
 
-  <!-- Education -->
-  <section id="education" class="purple center">
-    <span class="tag">// EDUCATION</span>
-    <h2 class="big">The Academic Road</h2>
-    <div class="edu">
-      <div><em>2024 – 2026</em><b>Master of Computer Applications</b><span>Saintgits College of Engineering, Kottayam</span></div>
-      <div><em>2021 – 2024</em><b>Bachelor of Computer Applications</b><span>St. Berchmans College, Changanasserry</span></div>
-      <div><em>2019 – 2021</em><b>Higher Secondary Education</b><span>NSS HSS, Karukachal</span></div>
-      <div><em>2018 – 2019</em><b>Secondary Education</b><span>Don Bosco HSS, Puthuppally</span></div>
+  <!-- Certifications -->
+  <section id="certifications" class="lime center">
+    <span class="tag">// CERTIFICATIONS</span>
+    <h2 class="big">Hall of Progress</h2>
+    <div class="certs">
+      <article class="cert">
+        <div class="cert-ic"><img src="certificates/logos/IJSET.png" alt="IJSET logo" data-fallback="fa-solid fa-book-open"></div>
+        <em>Mar 2026</em>
+        <h3>IJSET Journal Publication</h3>
+        <span class="org">International Journal of Science Engineering and Technology</span>
+        <a class="cert-link" href="certificates/IJSET.pdf" data-pdf="certificates/IJSET.pdf">Preview</a>
+      </article>
+
+      <article class="cert">
+        <div class="cert-ic"><img src="certificates/logos/NeST.png" alt="NeST Digital logo" data-fallback="fa-solid fa-laptop-code"></div>
+        <em>Jun 2025</em>
+        <h3>Industry Immersion Program on Front End Development using Angular</h3>
+        <span class="org">NeST Digital</span>
+        <a class="cert-link" href="certificates/NeST.pdf" data-pdf="certificates/NeST.pdf">Preview</a>
+      </article>
+
+      <article class="cert">
+        <div class="cert-ic"><img src="certificates/logos/NPTEL.png" alt="NPTEL logo" data-fallback="fa-solid fa-industry"></div>
+        <em>Apr 2025</em>
+        <h3>Introduction to Industry 4.0 and Industrial Internet of Things</h3>
+        <span class="org">NPTEL</span>
+        <a class="cert-link" href="certificates/NPTEL.pdf" data-pdf="certificates/NPTEL.pdf">Preview</a>
+      </article>
+
+      <article class="cert">
+        <div class="cert-ic"><img src="https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/ibm.svg" alt="ibm logo" data-fallback="fa-solid fa-robot"></div>
+        <em>Jan 2025</em>
+        <h3>Create Your Own Chatbot Website with Open Source LLMs</h3>
+        <span class="org">IBM</span>
+        <a class="cert-link" href="certificates/IBM.pdf" data-pdf="certificates/IBM.pdf">Preview</a>
+      </article>
+
+      <article class="cert">
+        <div class="cert-ic"><img src="https://cdn.simpleicons.org/Udemy" alt="Udemy logo" data-fallback="fa-brands fa-udemuy"></div>
+        <em>Jan 2025</em>
+        <h3>Learn PHP Programming: Create Dynamic Websites with MySQL</h3>
+        <span class="org">Udemy</span>
+        <a class="cert-link" href="certificates/Udemy.pdf" data-pdf="certificates/Udemy.pdf">Preview</a>
+      </article>
+
+      <article class="cert">
+        <div class="cert-ic"><img src="https://cdn.simpleicons.org/Zoho" alt="Zoho logo" data-fallback="fa-solid fa-cloud"></div>
+        <em>Mar 2024</em>
+        <h3>Introduction to Software Development</h3>
+        <span class="org">Zoho</span>
+        <a class="cert-link" href="certificates/Zoho.pdf" data-pdf="certificates/Zoho.pdf">Preview</a>
+      </article>
     </div>
   </section>
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="lime" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 0.839  0 0 0 0 1  0 0 0 0 0.412  0 0 0 1 0"/>
+    </filter>
+  </svg>
+
+    <!-- Certificate viewer -->
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
+    <div class="viewer-box">
+      <div class="viewer-bar">
+        <span class="viewer-title" id="viewerTitle">Certificate</span>
+        <div class="viewer-actions">
+          <button class="viewer-close" id="viewerClose" aria-label="Close certificate"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <iframe id="viewerFrame" title="Certificate PDF"></iframe>
+    </div>
+  </div>
+
   <!-- Contact -->
-  <section id="contact" class="purple center">
+  <section id="contact" class="lime center">
     <span class="tag">// CONTACT</span>
     <h2 class="big">Get in touch</h2>
     <div class="contact">
@@ -432,13 +518,34 @@
     start();
 
     /* Active nav link */
+    const navEl=document.querySelector('nav');
     const links=[...document.querySelectorAll('nav a[href^="#"]')];
-    const secs=['home','about','skills','projects','education','contact'].map(id=>document.getElementById(id));
+    const secs=['home','about','skills','projects','certifications','contact'].map(id=>document.getElementById(id));
 
-    const setActive=id=>links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+    let activeId=null;
+    const setActive=id=>{
+      if(id===activeId)return;
+      activeId=id;
+      links.forEach(l=>{
+        const on=l.getAttribute('href')==='#'+id;
+        l.classList.toggle('active',on);
+        if(on&&navEl.scrollWidth>navEl.clientWidth){
+          const left=l.getBoundingClientRect().left-navEl.getBoundingClientRect().left+navEl.scrollLeft;
+          navEl.scrollTo({left:left-(navEl.clientWidth-l.offsetWidth)/2,behavior:'smooth'});
+        }
+      });
+    };
 
-    let lock=null,lockTimer;
-    const unlock=()=>{lock=null;clearTimeout(lockTimer)};
+    function spy(){
+      const line=window.innerHeight*0.35;
+      let id=secs[0].id;
+      for(const s of secs){if(s.getBoundingClientRect().top<=line)id=s.id}
+      if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)id=secs[secs.length-1].id;
+      setActive(id);
+    }
+
+    let lock=null,lockTimer,ticking=false;
+    const unlock=()=>{lock=null;clearTimeout(lockTimer);spy()};
 
     links.forEach(l=>l.addEventListener('click',()=>{
       lock=l.getAttribute('href').slice(1);
@@ -448,18 +555,47 @@
     }));
 
     window.addEventListener('scroll',()=>{
-      if(!lock)return;
-      clearTimeout(lockTimer);
-      lockTimer=setTimeout(unlock,150);
+      if(lock){clearTimeout(lockTimer);lockTimer=setTimeout(unlock,150);return}
+      if(!ticking){ticking=true;requestAnimationFrame(()=>{ticking=false;spy()})}
     },{passive:true});
 
-    ['wheel','touchstart','keydown'].forEach(ev=>window.addEventListener(ev,unlock,{passive:true}));
+    window.addEventListener('resize',spy);
+    ['wheel','touchstart','keydown'].forEach(ev=>window.addEventListener(ev,()=>{if(lock)unlock()},{passive:true}));
+    spy();
 
-    const spy=new IntersectionObserver(es=>es.forEach(e=>{
-      if(lock)return;
-      if(e.isIntersecting)setActive(e.target.id);
-    }),{rootMargin:'-40% 0px -55% 0px'});
-    secs.forEach(s=>spy.observe(s));
+    /* Certificate viewer */
+    const viewer=document.getElementById('viewer'),
+    vFrame=document.getElementById('viewerFrame'),
+    vTitle=document.getElementById('viewerTitle'),
+    vClose=document.getElementById('viewerClose');
+    let vTrigger=null;
+
+    function openViewer(a){
+      vTrigger=a;
+      const pdf=a.dataset.pdf;
+      vTitle.textContent=a.closest('.cert').querySelector('h3').textContent;
+      vFrame.src=pdf+'#view=FitH';
+      viewer.classList.add('open');
+      document.body.classList.add('no-scroll');
+      vClose.focus();
+    }
+    function closeViewer(){
+      viewer.classList.remove('open');
+      document.body.classList.remove('no-scroll');
+      vFrame.src='about:blank';
+      if(vTrigger)vTrigger.focus();
+    }
+
+    document.querySelectorAll('.cert-link').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openViewer(a)}));
+    vClose.addEventListener('click',closeViewer);
+    viewer.addEventListener('click',e=>{if(e.target===viewer)closeViewer()});
+    window.addEventListener('keydown',e=>{if(e.key==='Escape'&&viewer.classList.contains('open'))closeViewer()});
+
+    document.querySelectorAll('.cert-ic img').forEach(img=>{
+      const swap=()=>{img.outerHTML=`<i class="${img.dataset.fallback}"></i>`};
+      if(img.complete&&img.naturalWidth===0)swap();
+      else img.addEventListener('error',swap,{once:true});
+    });
   </script>
 </body>
 </html>
