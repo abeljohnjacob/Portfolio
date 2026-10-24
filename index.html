@@ -140,6 +140,9 @@
     .viewer-close{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:var(--text);font-size:16px;cursor:pointer;transition:border-color .2s,color .2s}
     .viewer-close:hover{border-color:var(--accent);color:var(--accent)}
     .viewer iframe{flex:1;width:100%;border:0;background:#fff}
+    .viewer-pages{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#2a2830;padding:10px}
+    .viewer-pages canvas{display:block;width:100%;height:auto;margin:0 auto 10px;background:#fff;border-radius:4px}
+    .viewer-msg{color:var(--muted);text-align:center;padding:24px;font-size:14px}
     body.no-scroll{overflow:hidden}
 
     /* CONTACT */
@@ -421,6 +424,7 @@
         </div>
       </div>
       <iframe id="viewerFrame" title="Certificate PDF"></iframe>
+      <div class="viewer-pages" id="viewerPages" hidden></div>
     </div>
   </div>
 
@@ -566,22 +570,73 @@
     /* Certificate viewer */
     const viewer=document.getElementById('viewer'),
     vFrame=document.getElementById('viewerFrame'),
+    vPages=document.getElementById('viewerPages'),
     vTitle=document.getElementById('viewerTitle'),
     vClose=document.getElementById('viewerClose');
-    let vTrigger=null;
+    let vTrigger=null,pdfjsReady=null,renderToken=0;
+
+    const useCanvas=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+      ||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)
+      ||navigator.pdfViewerEnabled===false;
+
+    function loadPdfJs(){
+      if(pdfjsReady)return pdfjsReady;
+      pdfjsReady=new Promise((res,rej)=>{
+        const s=document.createElement('script');
+        s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+        s.onload=()=>{pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';res(pdfjsLib)};
+        s.onerror=()=>{pdfjsReady=null;rej()};
+        document.head.appendChild(s);
+      });
+      return pdfjsReady;
+    }
+
+    async function renderPdf(url){
+    const token=++renderToken;
+      vPages.innerHTML='<p class="viewer-msg">Loading certificate…</p>';
+      try{
+        const lib=await loadPdfJs();
+        const pdf=await lib.getDocument(url).promise;
+        if(token!==renderToken)return;
+        vPages.innerHTML='';
+        const dpr=Math.min(window.devicePixelRatio||1,2);
+        const width=vPages.clientWidth-20;
+        for(let n=1;n<=pdf.numPages;n++){
+          const page=await pdf.getPage(n);
+          if(token!==renderToken)return;
+          const base=page.getViewport({scale:1});
+          const vp=page.getViewport({scale:(width/base.width)*dpr});
+          const c=document.createElement('canvas');
+          c.width=vp.width;c.height=vp.height;
+          vPages.appendChild(c);
+          await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+        }
+      }catch(e){
+        if(token===renderToken)vPages.innerHTML='<p class="viewer-msg">Couldn’t load this certificate.</p>';
+      }
+    }
 
     function openViewer(a){
       vTrigger=a;
       const pdf=a.dataset.pdf;
       vTitle.textContent=a.closest('.cert').querySelector('h3').textContent;
-      vFrame.src=pdf+'#view=FitH';
       viewer.classList.add('open');
       document.body.classList.add('no-scroll');
+      if(useCanvas){
+        vFrame.hidden=true;vPages.hidden=false;vPages.scrollTop=0;
+        renderPdf(pdf);
+      }else{
+        vPages.hidden=true;vFrame.hidden=false;
+        vFrame.src=pdf+'#view=FitH';
+      }
       vClose.focus();
     }
+
     function closeViewer(){
       viewer.classList.remove('open');
       document.body.classList.remove('no-scroll');
+      renderToken++;
+      vPages.innerHTML='';
       vFrame.src='about:blank';
       if(vTrigger)vTrigger.focus();
     }
