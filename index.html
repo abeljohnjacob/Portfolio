@@ -136,13 +136,24 @@
     .viewer-box{width:min(1000px,100%);height:100%;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:20px;background:var(--bg-2);overflow:hidden;box-shadow:0 30px 80px #000a}
     .viewer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
     .viewer-title{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .viewer-actions{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+    .viewer-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
     .viewer-close{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:var(--text);font-size:16px;cursor:pointer;transition:border-color .2s,color .2s}
     .viewer-close:hover{border-color:var(--accent);color:var(--accent)}
+    .viewer-dl{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;background:var(--accent);color:#10110a;font-size:12px;font-weight:600;white-space:nowrap}
+    .viewer-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
+    .viewer-tools[hidden]{display:none}
+    .viewer-zoomgrp{display:flex;align-items:center;gap:10px}
+    .viewer-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:var(--text);cursor:pointer;transition:border-color .2s,color .2s}
+    .viewer-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+    .viewer-btn:disabled{opacity:.35;cursor:default}
+    .viewer-page,.viewer-zoom{font-family:var(--mono);font-size:12px;color:var(--muted)}
+    .viewer-zoom{min-width:42px;text-align:center}
     .viewer iframe{flex:1;width:100%;border:0;background:#fff}
-    .viewer-pages{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#2a2830;padding:10px}
-    .viewer-pages canvas{display:block;width:100%;height:auto;margin:0 auto 10px;background:#fff;border-radius:4px}
+    .viewer iframe[hidden],.viewer-pages[hidden]{display:none}
+    .viewer-pages{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;background:#2a2830;padding:10px}
+    .viewer-pages canvas{display:block;max-width:none;margin:0 auto 10px;background:#fff;border-radius:4px}
     .viewer-msg{color:var(--muted);text-align:center;padding:24px;font-size:14px}
+    @media(max-width:600px){.viewer-dl{padding:0;width:34px;height:34px;justify-content:center;font-size:0;gap:0}.viewer-dl i{font-size:14px}}
     body.no-scroll{overflow:hidden}
 
     /* CONTACT */
@@ -414,13 +425,22 @@
     </filter>
   </svg>
 
-    <!-- Certificate viewer -->
+  <!-- Certificate viewer -->
   <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
     <div class="viewer-box">
       <div class="viewer-bar">
         <span class="viewer-title" id="viewerTitle">Certificate</span>
         <div class="viewer-actions">
+          <a class="viewer-dl" id="viewerDl" download aria-label="Download certificate"><i class="fa-solid fa-download"></i> Download</a>
           <button class="viewer-close" id="viewerClose" aria-label="Close certificate"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="viewer-tools" id="viewerTools" hidden>
+        <span class="viewer-page" id="viewerPage">1 / 1</span>
+        <div class="viewer-zoomgrp">
+          <button class="viewer-btn" id="zoomOut" aria-label="Zoom out"><i class="fa-solid fa-minus"></i></button>
+          <span class="viewer-zoom" id="zoomLabel">100%</span>
+          <button class="viewer-btn" id="zoomIn" aria-label="Zoom in"><i class="fa-solid fa-plus"></i></button>
         </div>
       </div>
       <iframe id="viewerFrame" title="Certificate PDF"></iframe>
@@ -572,9 +592,16 @@
     vFrame=document.getElementById('viewerFrame'),
     vPages=document.getElementById('viewerPages'),
     vTitle=document.getElementById('viewerTitle'),
-    vClose=document.getElementById('viewerClose');
-    let vTrigger=null,pdfjsReady=null,renderToken=0;
+    vClose=document.getElementById('viewerClose'),
+    vDl=document.getElementById('viewerDl'),
+    vTools=document.getElementById('viewerTools'),
+    vPage=document.getElementById('viewerPage'),
+    zIn=document.getElementById('zoomIn'),
+    zOut=document.getElementById('zoomOut'),
+    zLabel=document.getElementById('zoomLabel');
+    let vTrigger=null,pdfjsReady=null,pdfDoc=null,zoom=1,renderToken=0;
 
+    /* Phones/tablets can't show PDFs inside an iframe, so draw the pages ourselves */
     const useCanvas=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
       ||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)
       ||navigator.pdfViewerEnabled===false;
@@ -591,42 +618,88 @@
       return pdfjsReady;
     }
 
-    async function renderPdf(url){
-    const token=++renderToken;
-      vPages.innerHTML='<p class="viewer-msg">Loading certificate…</p>';
+    function updateZoomUI(){
+      zLabel.textContent=Math.round(zoom*100)+'%';
+      zOut.disabled=zoom<=1;
+      zIn.disabled=zoom>=3;
+    }
+
+    function updatePageUI(){
+      const cs=[...vPages.querySelectorAll('canvas')];
+      if(!cs.length)return;
+      const mark=vPages.scrollTop+vPages.clientHeight/3;
+      let cur=1;
+      cs.forEach((c,i)=>{if(c.offsetTop-10<=mark)cur=i+1});
+      vPage.textContent=cur+' / '+cs.length;
+    }
+
+    async function renderPdf(keepScroll){
+      const token=++renderToken;
+      const ratio=keepScroll&&vPages.scrollHeight?vPages.scrollTop/vPages.scrollHeight:0;
+      const ratioX=keepScroll&&vPages.scrollWidth?vPages.scrollLeft/vPages.scrollWidth:0;
       try{
-        const lib=await loadPdfJs();
-        const pdf=await lib.getDocument(url).promise;
-        if(token!==renderToken)return;
-        vPages.innerHTML='';
         const dpr=Math.min(window.devicePixelRatio||1,2);
-        const width=vPages.clientWidth-20;
-        for(let n=1;n<=pdf.numPages;n++){
-          const page=await pdf.getPage(n);
+        const width=(vPages.clientWidth-20)*zoom;
+        const canvases=[];
+        for(let n=1;n<=pdfDoc.numPages;n++){
+          const page=await pdfDoc.getPage(n);
           if(token!==renderToken)return;
           const base=page.getViewport({scale:1});
-          const vp=page.getViewport({scale:(width/base.width)*dpr});
+          const cssScale=width/base.width;
+          const vp=page.getViewport({scale:cssScale*dpr});
           const c=document.createElement('canvas');
           c.width=vp.width;c.height=vp.height;
-          vPages.appendChild(c);
+          c.style.width=width+'px';
+          c.style.height=(base.height*cssScale)+'px';
           await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+          if(token!==renderToken)return;
+          canvases.push(c);
         }
+        vPages.replaceChildren(...canvases);
+        vPages.scrollTop=ratio*vPages.scrollHeight;
+        vPages.scrollLeft=ratioX*vPages.scrollWidth;
+        updatePageUI();
       }catch(e){
         if(token===renderToken)vPages.innerHTML='<p class="viewer-msg">Couldn’t load this certificate.</p>';
       }
+    }
+
+    async function loadCanvasPdf(url){
+      const token=++renderToken;
+      zoom=1;updateZoomUI();
+      vPage.textContent='– / –';
+      vPages.innerHTML='<p class="viewer-msg">Loading certificate…</p>';
+      try{
+        const lib=await loadPdfJs();
+        const doc=await lib.getDocument(url).promise;
+        if(token!==renderToken)return;
+        pdfDoc=doc;
+        await renderPdf(false);
+      }catch(e){
+        if(token===renderToken)vPages.innerHTML='<p class="viewer-msg">Couldn’t load this certificate.</p>';
+      }
+    }
+
+    function setZoom(z){
+      if(!pdfDoc)return;
+      zoom=Math.min(3,Math.max(1,Math.round(z*4)/4));
+      updateZoomUI();
+      renderPdf(true);
     }
 
     function openViewer(a){
       vTrigger=a;
       const pdf=a.dataset.pdf;
       vTitle.textContent=a.closest('.cert').querySelector('h3').textContent;
+      vDl.href=pdf;vDl.download=pdf.split('/').pop();
       viewer.classList.add('open');
       document.body.classList.add('no-scroll');
       if(useCanvas){
-        vFrame.hidden=true;vPages.hidden=false;vPages.scrollTop=0;
-        renderPdf(pdf);
+        vFrame.hidden=true;vPages.hidden=false;vTools.hidden=false;
+        vPages.scrollTop=0;vPages.scrollLeft=0;
+        loadCanvasPdf(pdf);
       }else{
-        vPages.hidden=true;vFrame.hidden=false;
+        vPages.hidden=true;vTools.hidden=true;vFrame.hidden=false;
         vFrame.src=pdf+'#view=FitH';
       }
       vClose.focus();
@@ -635,13 +708,16 @@
     function closeViewer(){
       viewer.classList.remove('open');
       document.body.classList.remove('no-scroll');
-      renderToken++;
+      renderToken++;pdfDoc=null;
       vPages.innerHTML='';
       vFrame.src='about:blank';
       if(vTrigger)vTrigger.focus();
     }
 
     document.querySelectorAll('.cert-link').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openViewer(a)}));
+    zIn.addEventListener('click',()=>setZoom(zoom+.25));
+    zOut.addEventListener('click',()=>setZoom(zoom-.25));
+    vPages.addEventListener('scroll',updatePageUI,{passive:true});
     vClose.addEventListener('click',closeViewer);
     viewer.addEventListener('click',e=>{if(e.target===viewer)closeViewer()});
     window.addEventListener('keydown',e=>{if(e.key==='Escape'&&viewer.classList.contains('open'))closeViewer()});
