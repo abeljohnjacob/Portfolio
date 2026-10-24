@@ -139,7 +139,7 @@
     .viewer-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
     .viewer-close{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:var(--text);font-size:16px;cursor:pointer;transition:border-color .2s,color .2s}
     .viewer-close:hover{border-color:var(--accent);color:var(--accent)}
-    .viewer-dl{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;background:var(--accent);color:#10110a;font-size:12px;font-weight:600;white-space:nowrap}
+    .viewer-dl{display:inline-grid;place-items:center;width:32px;height:32px;margin-left:6px;border-radius:50%;background:var(--accent);color:#10110a;font-size:14px}
     .viewer-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
     .viewer-tools[hidden]{display:none}
     .viewer-zoomgrp{display:flex;align-items:center;gap:10px}
@@ -153,7 +153,6 @@
     .viewer-pages{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;background:#2a2830;padding:10px}
     .viewer-pages canvas{display:block;max-width:none;margin:0 auto 10px;background:#fff;border-radius:4px}
     .viewer-msg{color:var(--muted);text-align:center;padding:24px;font-size:14px}
-    @media(max-width:600px){.viewer-dl{padding:0;width:34px;height:34px;justify-content:center;font-size:0;gap:0}.viewer-dl i{font-size:14px}}
     body.no-scroll{overflow:hidden}
 
     /* CONTACT */
@@ -431,7 +430,6 @@
       <div class="viewer-bar">
         <span class="viewer-title" id="viewerTitle">Certificate</span>
         <div class="viewer-actions">
-          <a class="viewer-dl" id="viewerDl" download aria-label="Download certificate"><i class="fa-solid fa-download"></i> Download</a>
           <button class="viewer-close" id="viewerClose" aria-label="Close certificate"><i class="fa-solid fa-xmark"></i></button>
         </div>
       </div>
@@ -441,6 +439,7 @@
           <button class="viewer-btn" id="zoomOut" aria-label="Zoom out"><i class="fa-solid fa-minus"></i></button>
           <span class="viewer-zoom" id="zoomLabel">100%</span>
           <button class="viewer-btn" id="zoomIn" aria-label="Zoom in"><i class="fa-solid fa-plus"></i></button>
+          <a class="viewer-dl" id="viewerDl" download aria-label="Download certificate" title="Download"><i class="fa-solid fa-download"></i></a>
         </div>
       </div>
       <iframe id="viewerFrame" title="Certificate PDF"></iframe>
