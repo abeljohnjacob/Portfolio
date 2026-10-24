@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&family=Public+Sans:wght@900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
- 
+
   <style>
     :root{
       --bg:#09080d;
@@ -28,7 +28,7 @@
     body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
     :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
- 
+
     /* NAVBAR */
     header{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(9,8,13,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 6px 30px rgba(0,0,0,.45)}
     .logo{font-weight:800;font-size:24px;letter-spacing:-.5px}.logo i{color:var(--accent);font-style:normal}
@@ -38,7 +38,7 @@
     nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:3px;border-radius:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
     nav a.active::after{transform:scaleX(1)}
     .pill{background:var(--accent);color:#10110a!important;padding:8px 16px;border-radius:99px;font-weight:600}
- 
+
     /* HERO */
     .hero-wrap{height:100vh}
     .hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;padding:0 7vw}
@@ -63,7 +63,7 @@
     .dots{position:absolute;right:18px;top:50%;transform:translateY(-50%);z-index:3;display:flex;flex-direction:column;gap:12px}
     .dots button{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:background .2s}
     .dots button.on{background:var(--accent)}
- 
+
     /* SECTIONS */
     section{padding:110px 7vw;position:relative}
     .tag{display:inline-block;font-family:var(--mono);font-size:11px;padding:5px 12px;border:1px solid rgba(var(--accent-rgb),.4);border-radius:99px;color:var(--accent);margin-bottom:18px}
@@ -71,11 +71,11 @@
     .lime{background:radial-gradient(900px 500px at 50% 0,#1d1a23 0%,transparent 70%)}
     .center{text-align:center}
     br.m{display:none}
- 
+
     /* TEXT ALIGNMENTS */
     .about p,.stats,.side p,.cards,.projects{text-align:justify}
     .langs,.contact{text-align:left}
- 
+
     /* ABOUT */
     .about{display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;max-width:1100px;margin:0 auto}
     .portrait{position:relative;border-radius:28px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;box-shadow:0 30px 80px #0009}
@@ -87,7 +87,7 @@
     .stat{padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--glass)}
     .stat b{display:block;font-size:16px;line-height:2}
     .stat small{display:block;font-size:14px;line-height:1.6;color:var(--muted)}
- 
+
     /* MARQUEE */
     .marquee{margin-top:44px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
     .track{display:flex;gap:12px;width:max-content;animation:slide 40s linear infinite;margin-bottom:12px}
@@ -96,26 +96,26 @@
     .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:14px;border:1px solid var(--line);background:var(--glass);font-family:var(--mono);font-size:13px;white-space:nowrap}
     .chip i{font-size:20px;line-height:1}
     @keyframes slide{to{transform:translateX(-50%)}}
- 
+
     /* SKILLS */
     .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;max-width:1200px;margin-inline:auto}
     .card{padding:26px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
     .card h3{font-size:19px;margin-bottom:8px}.card p{font-size:14px;color:var(--muted)}
     .mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
     .mini span{font-size:11px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid var(--line)}
- 
+
     /* LANGUAGES */
     .langs{max-width:800px;margin:50px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
     .lang small{font-family:var(--mono);font-size:11px;color:var(--muted)}
     .bar{height:8px;border-radius:9px;background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.2);margin:6px 0 4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);border-radius:9px}
- 
+
     /* PROJECTS */
     .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:1130px;margin:40px auto 0}
     .proj{border:1px solid var(--line);border-radius:24px;padding:20px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
     .thumb{height:170px;border-radius:16px;background:var(--bg-2);display:grid;place-items:center;overflow:hidden;margin-bottom:16px}
     .thumb img{width:100%;height:100%;object-fit:contain}
     .proj h3{font-size:20px}.proj p{font-size:14px;color:var(--muted);margin:6px 0 14px}
- 
+
     /* CERTIFICATIONS */
     .certs{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:40px auto 0;max-width:1100px;text-align:left}
     .cert{flex:0 1 calc((100% - 36px)/3);display:flex;flex-direction:column;padding:22px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
@@ -126,7 +126,7 @@
     .cert span.org{font-size:13px;color:var(--muted);margin-bottom:18px}
     .cert-link{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;padding:8px 18px;border-radius:99px;background:var(--accent);color:#10110a;border:1px solid var(--accent);font-size:13px;font-weight:600;transition:transform .2s,box-shadow .2s}
     .cert-link:hover{transform:translateY(-2px)}
- 
+
     /* CERTIFICATE VIEWER */
     .viewer{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:3vh 3vw;background:rgba(9,8,13,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
     .viewer.open{display:flex}
@@ -151,7 +151,7 @@
     .viewer-pages canvas{display:block;max-width:none;margin:0 auto 10px;background:#fff;border-radius:4px}
     .viewer-msg{color:var(--muted);text-align:center;padding:24px;font-size:14px}
     body.no-scroll{overflow:hidden}
- 
+
     /* CONTACT */
     .contact{display:grid;grid-template-columns:max-content 1fr;gap:50px;max-width:850px;margin:40px auto 0;padding:26px;border:1px solid var(--line);border-radius:28px;background:var(--glass)}
     .info{display:flex;flex-direction:column;gap:18px;margin-top:22px}
@@ -168,12 +168,12 @@
     input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--text);font:inherit;font-size:14px}
     input:focus,textarea:focus{outline:none;border-color:var(--accent)}
     form button{padding:13px;border:0;border-radius:12px;background:var(--accent);color:#10110a;font-family:Inter,system-ui,sans-serif;font-size:14px;font-weight:600;cursor:pointer}
- 
+
     /* FOOTER */
     footer{padding:0 7vw 30px;text-align:center;overflow:hidden}
     .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:30px;flex-wrap:wrap;gap:10px}
     .foot .btn{font-family:Inter,system-ui,sans-serif;font-size:14px}
- 
+
     /* CARD HOVER */
     .stat,.card,.proj,.cert{transition:border-color .25s,transform .25s,box-shadow .25s}
     @media(hover:hover){
@@ -183,10 +183,10 @@
         box-shadow:0 0 0 1px var(--accent),0 14px 34px rgba(var(--accent-rgb),.12)
       }
     }
- 
+
     @media(max-width:1150px){header{padding:16px 24px}nav{gap:16px}}
     @media(max-width:1000px){.cert{flex-basis:calc((100% - 18px)/2)}}
- 
+
     @media(max-width:900px){
       header{flex-direction:column;align-items:stretch;gap:6px;padding:10px 18px 12px}
       .logo{font-size:20px;line-height:1.3}
@@ -211,7 +211,7 @@
       .contact{padding:20px}
       .foot{justify-content:center;text-align:center}
     }
- 
+
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
       .track{animation:none}
@@ -220,7 +220,7 @@
     }
   </style>
 </head>
- 
+
 <body>
   <!-- Navbar -->
   <header>
@@ -235,7 +235,7 @@
       <a class="pill" href="CV_Creative.pdf" target="_blank" rel="noopener">View CV</a>
     </nav>
   </header>
- 
+
   <!-- Home -->
   <div class="hero-wrap" id="home">
     <div class="hero">
@@ -244,20 +244,20 @@
           <p class="hi">Hi, I'm <b>Abel John Jacob</b>. Welcome to my portfolio!</p>
           <h1 class="headline" id="headline"><span id="h1">Strategic</span><span id="h2">Matrix</span></h1>
         </div>
- 
+
         <div class="side">
           <small id="kicker">SOFTWARE DEVELOPMENT</small>
           <p id="sub">Building reliable web apps and impactful technology solutions with efficient DB management.</p>
         </div>
       </div>
- 
+
       <p class="scroll-hint">↓ Scroll for more info</p>
- 
+
       <div class="ctas">
         <a class="btn solid" href="#about">Explore</a>
         <a class="btn" href="#contact">Connect</a>
       </div>
- 
+
       <div class="dots" id="dots">
         <button class="on" aria-label="Slide 1"></button>
         <button aria-label="Slide 2"></button>
@@ -265,19 +265,19 @@
       </div>
     </div>
   </div>
- 
+
   <!-- About -->
   <section id="about" class="lime">
     <div class="center">
       <span class="tag">// ABOUT</span>
     </div>
- 
+
     <div class="about">
       <div class="portrait">
         <img src="My_Pic2.jpg" alt="Abel John Jacob">
         <div class="open"><span class="dot"></span>Open to opportunities</div>
       </div>
- 
+
       <div>
         <h2 class="big">Learning-Building-<br class="m">Growing<br class="d"> in Tech</h2>
         <p>An MCA graduate passionate about building impactful technology solutions, streamlining complex operations, and solving real-world business challenges. During my academics and internships, I focused on how software applications interact with business workflows and system configurations. My main focus areas are:</p>
@@ -289,39 +289,39 @@
       </div>
     </div>
   </section>
- 
+
   <!-- Skills -->
   <section id="skills" class="lime center">
     <span class="tag">// SKILLS</span>
     <h2 class="big">Stack &amp; Speech Behind the Work</h2>
     <div class="marquee" id="marquee"></div>
- 
+
     <div class="cards">
       <div class="card">
         <h3>Software Development</h3>
         <p>Building responsive, secure web applications with robust backend databases and clean code.</p>
         <div class="mini"><span>Python</span><span>TypeScript</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>XML</span><span>Bootstrap</span><span>Angular</span><span>Flask</span><span>Scikit-Learn</span><span>MySQL</span><span>SQLite</span></div>
       </div>
- 
+
       <div class="card">
         <h3>Microsoft Office Suite</h3>
         <p>Optimizing workflow analysis, tracking key project metrics and enabling cross-team collaboration.</p>
         <div class="mini"><span>Excel</span><span>PowerPoint</span><span>Word</span></div>
       </div>
- 
+
       <div class="card">
         <h3>IT Support</h3>
         <p>Installing software, configuring secure operating systems and troubleshooting network issues.</p>
         <div class="mini"><span>Software Installation</span><span>Configuration</span><span>Technical Troubleshooting</span></div>
       </div>
- 
+
       <div class="card">
         <h3>Soft Skills</h3>
         <p>Fostering project delivery through structured planning and clear communication.</p>
         <div class="mini"><span>Communication</span><span>Teamwork</span><span>Planning</span><span>Organisation</span></div>
       </div>
     </div>
- 
+
     <div class="langs">
       <div class="lang"><b>English</b><div class="bar"><i style="width:70%"></i></div><small>Proficient</small></div>
       <div class="lang"><b>Hindi</b><div class="bar"><i style="width:90%"></i></div><small>Advanced</small></div>
@@ -329,7 +329,7 @@
       <div class="lang"><b>Tamil</b><div class="bar"><i style="width:50%"></i></div><small>Intermediate</small></div>
     </div>
   </section>
- 
+
   <!-- Projects -->
   <section id="projects" class="lime center">
     <span class="tag">// PROJECTS</span>
@@ -341,21 +341,21 @@
         <p>A college facility management web platform for booking rooms and labs, tracking schedules and managing campus resources. It also improves communication between students and faculty through a chat system.</p>
         <div class="mini"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>Python/Flask</span><span>SQLite</span></div>
       </article>
- 
+
       <article class="proj">
         <div class="thumb"><img src="Projects/plot-point.svg" alt="Plot Point"></div>
         <h3>Plot Point</h3>
         <p>A real estate web platform that allows users to explore and compare properties based on their preferences. It also provides personalized property recommendations to simplify the search and support informed decisions.</p>
         <div class="mini"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>Python/Flask</span><span>Scikit-Learn</span><span>SQLite</span></div>
       </article>
- 
+
       <article class="proj">
         <div class="thumb"><img src="Projects/smart-crack.svg" alt="Smart Crack"></div>
         <h3>Smart Crack</h3>
         <p>An aptitude quiz android application featuring timed tests and progressive difficulty levels. It helps users practise aptitude questions, assess their performance and improve their problem-solving skills.</p>
         <div class="mini"><span>XML</span><span>Java</span><span>Firebase</span></div>
       </article>
- 
+
       <article class="proj">
         <div class="thumb"><img src="Projects/pro-pilet.svg" alt="Pro Pilet"></div>
         <h3>Pro Pilet</h3>
@@ -364,7 +364,7 @@
       </article>
     </div>
   </section>
- 
+
   <!-- Certifications -->
   <section id="certifications" class="lime center">
     <span class="tag">// CERTIFICATIONS</span>
@@ -377,7 +377,7 @@
         <span class="org">International Journal of Science Engineering and Technology</span>
         <a class="cert-link" href="Certificates/IJSET.pdf" data-pdf="Certificates/IJSET.pdf">Preview</a>
       </article>
- 
+
       <article class="cert">
         <div class="cert-ic"><img src="Certificates/logos/NeST.png" alt="NeST Digital logo" data-fallback="fa-solid fa-laptop-code"></div>
         <em>Jun 2025</em>
@@ -385,7 +385,7 @@
         <span class="org">NeST Digital</span>
         <a class="cert-link" href="Certificates/NeST.pdf" data-pdf="Certificates/NeST.pdf">Preview</a>
       </article>
- 
+
       <article class="cert">
         <div class="cert-ic"><img src="Certificates/logos/NPTEL.png" alt="NPTEL logo" data-fallback="fa-solid fa-industry"></div>
         <em>Apr 2025</em>
@@ -393,7 +393,7 @@
         <span class="org">NPTEL</span>
         <a class="cert-link" href="Certificates/NPTEL.pdf" data-pdf="Certificates/NPTEL.pdf">Preview</a>
       </article>
- 
+
       <article class="cert">
         <div class="cert-ic"><img src="https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/ibm.svg" alt="IBM logo" data-fallback="fa-solid fa-robot"></div>
         <em>Jan 2025</em>
@@ -401,7 +401,7 @@
         <span class="org">IBM</span>
         <a class="cert-link" href="Certificates/IBM.pdf" data-pdf="Certificates/IBM.pdf">Preview</a>
       </article>
- 
+
       <article class="cert">
         <div class="cert-ic"><img src="https://cdn.simpleicons.org/Udemy" alt="Udemy logo" data-fallback="fa-brands fa-udemy"></div>
         <em>Jan 2025</em>
@@ -409,7 +409,7 @@
         <span class="org">Udemy</span>
         <a class="cert-link" href="Certificates/Udemy.pdf" data-pdf="Certificates/Udemy.pdf">Preview</a>
       </article>
- 
+
       <article class="cert">
         <div class="cert-ic"><img src="https://cdn.simpleicons.org/Zoho" alt="Zoho logo" data-fallback="fa-solid fa-cloud"></div>
         <em>Mar 2024</em>
@@ -419,13 +419,13 @@
       </article>
     </div>
   </section>
- 
+
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <filter id="lime" color-interpolation-filters="sRGB">
       <feColorMatrix type="matrix" values="0 0 0 0 0.839  0 0 0 0 1  0 0 0 0 0.412  0 0 0 1 0"/>
     </filter>
   </svg>
- 
+
   <!-- Certificate viewer -->
   <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
     <div class="viewer-box">
@@ -448,7 +448,7 @@
       <div class="viewer-pages" id="viewerPages" hidden></div>
     </div>
   </div>
- 
+
   <!-- Contact -->
   <section id="contact" class="lime center">
     <span class="tag">// CONTACT</span>
@@ -456,13 +456,13 @@
     <div class="contact">
       <div>
         <b>Connect with me</b>
- 
+
         <div class="info">
           <a href="mailto:abeljr279@gmail.com"><i class="gmail-icon"></i>abeljr279@gmail.com</a>
           <a href="tel:+919188645747"><i class="fa-solid fa-phone"></i>+91 9188645747</a>
           <p><i class="fa-solid fa-location-dot"></i>Kottayam, Kerala, India</p>
         </div>
- 
+
         <div class="links">
           <a href="https://github.com/abeljohnjacob" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
           <a href="https://www.linkedin.com/in/abel-john-jacob-27ab15322/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
@@ -477,18 +477,18 @@
       </form>
     </div>
   </section>
- 
+
   <footer>
     <div class="foot">
       <span>© <span id="year"></span> All rights reserved</span>
       <a href="#home" class="btn">Start over</a>
     </div>
   </footer>
- 
+
   <script>
     /* Footer year */
     document.getElementById('year').textContent=new Date().getFullYear();
- 
+
     /* Tech chips marquee */
     const techs=[
       ['Python','devicon-python-plain colored'],
@@ -507,23 +507,23 @@
       ['PowerPoint','fa-solid fa-file-powerpoint','#d35230'],
       ['Word','fa-solid fa-file-word','#2b7cd3']
     ];
- 
+
     const row=(list,cls)=>`<div class="track ${cls}">${[...list,...list].map(([t,ic,c])=>`<span class="chip"><i class="${ic}"${c?` style="color:${c}"`:''}></i>${t}</span>`).join('')}</div>`;
     document.getElementById('marquee').innerHTML=row(techs,'')+row([...techs].reverse(),'rev');
- 
+
     /* Auto-rotating hero */
     const steps=[
       {a:'Strategic',b:'Matrix',k:'SOFTWARE DEVELOPMENT',s:'Building reliable web apps and impactful technology solutions with efficient DB management.'},
       {a:'Smart',b:'Workflows',k:'BUSINESS OPERATIONS',s:'Project tracking with workflow analysis and cross-functional collaboration for big outcomes.'},
       {a:'Stable',b:'Systems',k:'NETWORKING',s:'Software installation with system configuration and troubleshooting that keeps everything running.'}
     ];
- 
+
     const hl=document.getElementById('headline'),
     h1=document.getElementById('h1'),h2=document.getElementById('h2'),
     kk=document.getElementById('kicker'),ss=document.getElementById('sub'),
     dots=[...document.querySelectorAll('#dots button')];
     let cur=0,timer,swapTimer;
- 
+
     function show(i){
       cur=i;
       dots.forEach((d,n)=>d.classList.toggle('on',n===i));
@@ -531,20 +531,20 @@
       clearTimeout(swapTimer);
       swapTimer=setTimeout(()=>{h1.textContent=steps[i].a;h2.textContent=steps[i].b;kk.textContent=steps[i].k;ss.textContent=steps[i].s;hl.classList.remove('swap')},350);
     }
- 
+
     function start(){
       clearInterval(timer);
       timer=setInterval(()=>show((cur+1)%steps.length),5000);
     }
- 
+
     dots.forEach((d,n)=>d.addEventListener('click',()=>{if(n!==cur)show(n);start()}));
     start();
- 
+
     /* Active nav link */
     const navEl=document.querySelector('nav');
     const links=[...document.querySelectorAll('nav a[href^="#"]')];
     const secs=['home','about','skills','projects','certifications','contact'].map(id=>document.getElementById(id));
- 
+
     let activeId=null;
     const setActive=id=>{
       if(id===activeId)return;
@@ -558,7 +558,7 @@
         }
       });
     };
- 
+
     function spy(){
       const line=window.innerHeight*0.35;
       let id=secs[0].id;
@@ -566,26 +566,26 @@
       if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)id=secs[secs.length-1].id;
       setActive(id);
     }
- 
+
     let lock=null,lockTimer,ticking=false;
     const unlock=()=>{lock=null;clearTimeout(lockTimer);spy()};
- 
+
     links.forEach(l=>l.addEventListener('click',()=>{
       lock=l.getAttribute('href').slice(1);
       setActive(lock);
       clearTimeout(lockTimer);
       lockTimer=setTimeout(unlock,1200);
     }));
- 
+
     window.addEventListener('scroll',()=>{
       if(lock){clearTimeout(lockTimer);lockTimer=setTimeout(unlock,150);return}
       if(!ticking){ticking=true;requestAnimationFrame(()=>{ticking=false;spy()})}
     },{passive:true});
- 
+
     window.addEventListener('resize',spy);
     ['wheel','touchstart','keydown'].forEach(ev=>window.addEventListener(ev,()=>{if(lock)unlock()},{passive:true}));
     spy();
- 
+
     /* Certificate viewer - Desktop view */
     const viewer=document.getElementById('viewer'),
     vFrame=document.getElementById('viewerFrame'),
@@ -599,12 +599,12 @@
     zOut=document.getElementById('zoomOut'),
     zLabel=document.getElementById('zoomLabel');
     let vTrigger=null,pdfjsReady=null,pdfDoc=null,zoom=1,renderToken=0;
- 
+
     /* Certificate Viewer - Android view */
     const useCanvas=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
       ||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)
       ||navigator.pdfViewerEnabled===false;
- 
+
     function loadPdfJs(){
       if(pdfjsReady)return pdfjsReady;
       pdfjsReady=new Promise((res,rej)=>{
@@ -616,13 +616,13 @@
       });
       return pdfjsReady;
     }
- 
+
     function updateZoomUI(){
       zLabel.textContent=Math.round(zoom*100)+'%';
       zOut.disabled=zoom<=1;
       zIn.disabled=zoom>=3;
     }
- 
+
     function updatePageUI(){
       const cs=[...vPages.querySelectorAll('canvas')];
       if(!cs.length)return;
@@ -631,7 +631,7 @@
       cs.forEach((c,i)=>{if(c.offsetTop-10<=mark)n=i+1});
       vPage.textContent=n+' / '+cs.length;
     }
- 
+
     async function renderPdf(keepScroll){
       const token=++renderToken;
       const ratio=keepScroll&&vPages.scrollHeight?vPages.scrollTop/vPages.scrollHeight:0;
@@ -662,7 +662,7 @@
         if(token===renderToken)vPages.innerHTML='<p class="viewer-msg">Couldn’t load this certificate.</p>';
       }
     }
- 
+
     async function loadCanvasPdf(url){
       const token=++renderToken;
       zoom=1;updateZoomUI();
@@ -678,14 +678,14 @@
         if(token===renderToken)vPages.innerHTML='<p class="viewer-msg">Couldn’t load this certificate.</p>';
       }
     }
- 
+
     function setZoom(z){
       if(!pdfDoc)return;
       zoom=Math.min(3,Math.max(1,Math.round(z*4)/4));
       updateZoomUI();
       renderPdf(true);
     }
- 
+
     function openViewer(a){
       vTrigger=a;
       const pdf=a.dataset.pdf;
@@ -703,7 +703,7 @@
       }
       vClose.focus();
     }
- 
+
     function closeViewer(){
       viewer.classList.remove('open');
       document.body.classList.remove('no-scroll');
@@ -712,7 +712,7 @@
       vFrame.src='about:blank';
       if(vTrigger)vTrigger.focus();
     }
- 
+
     document.querySelectorAll('.cert-link').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openViewer(a)}));
     zIn.addEventListener('click',()=>setZoom(zoom+.25));
     zOut.addEventListener('click',()=>setZoom(zoom-.25));
@@ -720,7 +720,7 @@
     vClose.addEventListener('click',closeViewer);
     viewer.addEventListener('click',e=>{if(e.target===viewer)closeViewer()});
     window.addEventListener('keydown',e=>{if(e.key==='Escape'&&viewer.classList.contains('open'))closeViewer()});
- 
+
     /* Icon fallbacks */
     document.querySelectorAll('.cert-ic img').forEach(img=>{
       const swap=()=>{img.outerHTML=`<i class="${img.dataset.fallback}"></i>`};
