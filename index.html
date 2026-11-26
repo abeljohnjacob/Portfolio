@@ -98,7 +98,7 @@
     @keyframes slide{to{transform:translateX(-50%)}}
 
     /* SKILLS */
-    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;max-width:1200px;margin-inline:auto}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:18px;margin-top:40px;max-width:1100px;margin-inline:auto}
     .card{padding:26px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
     .card h3{font-size:19px;margin-bottom:8px}.card p{font-size:14px;color:var(--muted)}
     .mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
@@ -282,8 +282,8 @@
         <h2 class="big">Learning-Building-<br class="m">Growing<br class="d"> in Tech</h2>
         <p>An MCA graduate passionate about building impactful technology solutions, streamlining complex operations, and solving real-world business challenges. During my academics and internships, I focused on how software applications interact with business workflows and system configurations. My main focus areas are:</p>
         <div class="stats">
-          <div class="stat"><b>Software Development</b><small>Experienced in building web applications with a core focus on secure coding practices.</small></div>
-          <div class="stat"><b>Business Operations</b><small>Skilled in project tracking and collaborating with teams to deliver high-value outcomes.</small></div>
+          <div class="stat"><b>Development</b><small>Experienced in building web applications with a core focus on secure coding practices.</small></div>
+          <div class="stat"><b>Management</b><small>Skilled in project tracking and collaborating with teams to deliver high-value outcomes.</small></div>
           <div class="stat"><b>Networking</b><small>Knowledgable in base system installation, configuration and technical troubleshooting.</small></div>
         </div>
       </div>
@@ -299,20 +299,32 @@
     <div class="cards">
       <div class="card">
         <h3>Software Development</h3>
-        <p>Building responsive, secure web applications with robust backend databases and clean code.</p>
+        <p>Building responsive, secure web applications with robust backend and databases.</p>
         <div class="mini"><span>Python</span><span>JavaScript</span><span>TypeScript</span><span>HTML</span><span>CSS</span><span>XML</span><span>Flask</span><span>Angular</span><span>Bootstrap</span><span>Scikit-Learn</span><span>MySQL</span><span>SQLite</span></div>
       </div>
 
       <div class="card">
+        <h3>Version Control</h3>
+        <p>Managing code history and pull requests to support smooth team collaboration.</p>
+        <div class="mini"><span>Git</span><span>GitHub</span></div>
+      </div>
+
+      <div class="card">
         <h3>Microsoft Office Suite</h3>
-        <p>Optimizing workflow analysis, tracking key project metrics and enabling cross-team collaboration.</p>
+        <p>Optimizing data analysis, tracking project metrics and communicate results.</p>
         <div class="mini"><span>Excel</span><span>PowerPoint</span><span>Word</span></div>
       </div>
 
       <div class="card">
         <h3>IT Support</h3>
-        <p>Installing software, configuring secure operating systems and troubleshooting network issues.</p>
+        <p>Installing software, configuring systems and troubleshooting network issues.</p>
         <div class="mini"><span>Software Installation</span><span>System Configuration</span><span>Troubleshooting</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Cyber Security</h3>
+        <p>Scanning network traffic and identifying vulnerabilities to strengthen system security.</p>
+        <div class="mini"><span>Nmap</span><span>Wireshark</span></div>
       </div>
 
       <div class="card">
@@ -345,7 +357,7 @@
       <article class="proj">
         <div class="thumb"><img src="Projects/plot-point.svg" alt="Plot Point"></div>
         <h3>Plot Point</h3>
-        <p>A real estate web platform that allows users to explore and compare properties based on their preferences. It also provides personalized property recommendations to simplify the search and support informed decisions.</p>
+        <p>A real estate web platform that allows users to explore and compare properties based on their preferences. It also provides recommendations of properties to simplify the search and support informed decisions.</p>
         <div class="mini"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>Python/Flask</span><span>Scikit-Learn</span><span>SQLite</span></div>
       </article>
 
@@ -370,6 +382,38 @@
     <span class="tag">// CERTIFICATIONS</span>
     <h2 class="big">Hall of Progress</h2>
     <div class="certs">
+      <article class="cert">
+        <div class="cert-ic"><img src="https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/ibm.svg" alt="IBM logo" data-fallback="fa-solid fa-robot"></div>
+        <em>Nov 2026</em>
+        <h3>Business Analyst Pathway</h3>
+        <span class="org">IBM</span>
+        <a class="cert-link" href="Certificates/IBM BA.pdf" data-pdf="Certificates/IBM BA.pdf">Preview</a>
+      </article>
+
+      <article class="cert">
+        <div class="cert-ic"><img src="https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/ibm.svg" alt="IBM logo" data-fallback="fa-solid fa-robot"></div>
+        <em>Nov 2026</em>
+        <h3>Project Management Fundamentals</h3>
+        <span class="org">IBM</span>
+        <a class="cert-link" href="Certificates/IBM PM.pdf" data-pdf="Certificates/IBM PM.pdf">Preview</a>
+      </article>
+
+      <article class="cert">
+        <div class="cert-ic"><img src="https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/cisco.svg" alt="Cisco Networking Academy logo" data-fallback="fa-solid fa-robot"></div>
+        <em>Nov 2026</em>
+        <h3>Introduction to Cybersecurity</h3>
+        <span class="org">Cisco Networking Academy</span>
+        <a class="cert-link" href="Certificates/Cisco Cybersecurity.pdf" data-pdf="Certificates/Cisco Cybersecurity.pdf">Preview</a>
+      </article>
+
+      <article class="cert">
+        <div class="cert-ic"><img src="https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/cisco.svg" alt="Cisco Networking Academy logo" data-fallback="fa-solid fa-robot"></div>
+        <em>Nov 2026</em>
+        <h3>Networking Devices and Initial Cofiguration</h3>
+        <span class="org">Cisco Networking Academy</span>
+        <a class="cert-link" href="Certificates/Cisco Networking.pdf" data-pdf="Certificates/Cisco Networking.pdf">Preview</a>
+      </article>
+
       <article class="cert">
         <div class="cert-ic"><img src="Certificates/logos/IJSET.png" alt="IJSET logo" data-fallback="fa-solid fa-book-open"></div>
         <em>Mar 2026</em>
@@ -399,15 +443,7 @@
         <em>Jan 2025</em>
         <h3>Create Your Own Chatbot Website with Open Source LLMs</h3>
         <span class="org">IBM</span>
-        <a class="cert-link" href="Certificates/IBM.pdf" data-pdf="Certificates/IBM.pdf">Preview</a>
-      </article>
-
-      <article class="cert">
-        <div class="cert-ic"><img src="https://cdn.simpleicons.org/Udemy" alt="Udemy logo" data-fallback="fa-brands fa-udemy"></div>
-        <em>Jan 2025</em>
-        <h3>Learn PHP Programming: Create Dynamic Websites with MySQL</h3>
-        <span class="org">Udemy</span>
-        <a class="cert-link" href="Certificates/Udemy.pdf" data-pdf="Certificates/Udemy.pdf">Preview</a>
+        <a class="cert-link" href="Certificates/IBM Chatbot LLM.pdf" data-pdf="Certificates/IBM Chatbot LLM.pdf">Preview</a>
       </article>
 
       <article class="cert">
@@ -513,8 +549,8 @@
 
     /* Auto-rotating hero */
     const steps=[
-      {a:'Strategic',b:'Matrix',k:'SOFTWARE DEVELOPMENT',s:'Building reliable web apps and impactful technology solutions with efficient DB management.'},
-      {a:'Smart',b:'Workflows',k:'BUSINESS OPERATIONS',s:'Project tracking with workflow analysis and cross-functional collaboration for big outcomes.'},
+      {a:'Strategic',b:'Matrix',k:'DEVELOPMENT',s:'Building reliable web apps and impactful technology solutions with efficient DB management.'},
+      {a:'Smart',b:'Workflows',k:'MANAGEMENT',s:'Project tracking with workflow analysis and cross-functional collaboration for big outcomes.'},
       {a:'Stable',b:'Systems',k:'NETWORKING',s:'Software installation with system configuration and troubleshooting that keeps everything running.'}
     ];
 
